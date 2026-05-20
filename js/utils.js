@@ -49,3 +49,19 @@ window.obtenerIdDeLaURL = function() {
 document.addEventListener('DOMContentLoaded', () => {
     inicializarAcordeonFooter();
 });
+
+// 4. Sistema para encoger el Header y Logo al hacer Scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.ecommerce-header');
+    
+    if (header) {
+        window.addEventListener('scroll', () => {
+            // Si el usuario baja más de 40 píxeles desde el inicio...
+            if (window.scrollY > 40) {
+                header.classList.add('shrunk'); // Añade la clase que encoge el logo
+            } else {
+                header.classList.remove('shrunk'); // Quita la clase y vuelve al tamaño original
+            }
+        });
+    }
+});

@@ -1,0 +1,48 @@
+/* ================================================
+   VARIABLES.CSS — BY DYCREA IMPRESIONES 3D
+   ================================================ */
+
+/* ── 1. PALETA DE COLORES Y SOMBRAS ── */
+:root {
+    --bg-body:         #f2f4f7;
+    --bg-white:        #ffffff;
+    --text-dark:       #1a1a1a;
+    --text-body:       #555555;
+    --text-light:      #9aa0aa;
+    --primary-accent:  #9ed615;
+    --primary-dark:    #7fac0d;
+    --secondary-brand: #0f172a;
+    --danger:          #ff4757;
+    --shadow-sm:       0 2px 8px rgba(0,0,0,0.05);
+    --shadow-md:       0 8px 24px rgba(0,0,0,0.09);
+    --radius-md:       12px;
+}
+
+/* ── 2. RESET BÁSICO Y SCROLL ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Deslizamiento suave */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Tipografía oficial */
+    background-color: var(--bg-body);
+    color: var(--text-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent; /* Quita el destello azul en móviles */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}

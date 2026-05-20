@@ -1,0 +1,81 @@
+/* ================================================
+   CARRITO.CSS — BY DYCREA IMPRESIONES 3D
+   (Enfoque Mobile-First)
+   ================================================ */
+
+/* ── 1. FONDO OSCURO (OVERLAY) ── */
+.cart-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(2px);
+    z-index: 1001;
+    opacity: 0; visibility: hidden;
+    transition: all 0.3s ease;
+}
+.cart-overlay.active { opacity: 1; visibility: visible; }
+
+/* ── 2. SIDEBAR DEL CARRITO (Celular Base) ── */
+.cart-sidebar {
+    position: fixed; top: 0; right: -100%; /* Oculto a la derecha */
+    width: 100%; /* Ocupa TODA la pantalla en móvil */
+    height: 100vh;
+    background: var(--bg-white);
+    z-index: 1002;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+    display: flex; flex-direction: column;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cart-sidebar.active { right: 0; }
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #f8fafc;
+}
+.cart-header h3 { font-size: 1.1rem; color: var(--secondary-brand); display: flex; gap: 10px; align-items: center; margin: 0; }
+.close-cart { background: transparent; border: none; font-size: 1.2rem; color: var(--text-light); cursor: pointer; }
+
+/* ── 3. LISTADO DE PRODUCTOS EN CARRITO ── */
+.cart-items {
+    flex: 1; overflow-y: auto; padding: 20px;
+    display: flex; flex-direction: column; gap: 15px;
+}
+.cart-item { display: flex; gap: 15px; padding-bottom: 15px; border-bottom: 1px solid #f1f5f9; position: relative; }
+.cart-item-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; }
+.cart-item-info { flex: 1; }
+.cart-item-title { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px; line-height: 1.2; }
+.cart-item-price { font-weight: 700; color: var(--secondary-brand); }
+.remove-item { position: absolute; right: 0; bottom: 15px; background: transparent; border: none; color: var(--danger); cursor: pointer; }
+
+/* ── 4. FOOTER Y CHECKOUT WHATSAPP ── */
+.cart-footer { padding: 20px; border-top: 1px solid #e2e8f0; background: var(--bg-white); }
+.cart-total { display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 800; color: var(--secondary-brand); margin-bottom: 15px; }
+.btn-checkout {
+    width: 100%; padding: 15px; background: #25D366; /* Verde WhatsApp */
+    color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem;
+    cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; transition: background 0.2s;
+}
+.btn-checkout:hover { background: #1ebd5a; }
+
+/* ── 5. NOTIFICACIONES (TOASTS) ── */
+#toast-container { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); z-index: 1000; display: flex; flex-direction: column; gap: 10px; pointer-events: none; width: 90%; max-width: 350px; }
+.toast { background: var(--secondary-brand); color: white; padding: 12px 20px; border-radius: 30px; font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; gap: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); opacity: 0; transform: translateY(20px); transition: opacity 0.3s, transform 0.3s; }
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast-icon { background: var(--primary-accent); color: var(--secondary-brand); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+
+
+/* ================================================
+   ADAPTACIÓN PARA PANTALLAS GRANDES (PC / Tablets)
+   ================================================ */
+@media (min-width: 768px) {
+    .cart-sidebar {
+        width: 400px; /* En PC se limita a 400px para no tapar toda la pantalla */
+    }
+    #toast-container {
+        bottom: 30px; /* Bajamos las notificaciones porque en PC no hay menú inferior */
+        left: unset;
+        right: 30px; /* Lo pasamos a la esquina inferior derecha */
+        transform: none;
+    }
+}

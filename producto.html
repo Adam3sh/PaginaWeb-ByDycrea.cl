@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,20 @@
     <link rel="icon" href="img/favicon.ico" type="image/webp">
 
     <meta property="og:title" content="Producto Exclusivo | By Dycrea Impresiones 3D">
-    <meta property="og:description" content="Mira los detalles de esta figura coleccionable. Calidad premium y personalización disponible.">
+    <meta property="og:description"
+        content="Mira los detalles de esta figura coleccionable. Calidad premium y personalización disponible.">
     <meta property="og:image" content="https://tu-dominio.cl/img/logo-impresiones.webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/inicio.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/detalle.css">
 
@@ -21,6 +29,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
+
 <body>
 
     <div class="top-bar">
@@ -31,7 +40,7 @@
     <header class="ecommerce-header">
         <div class="header-container">
             <div class="brand" onclick="window.location.href='index.html'">
-                <img src="img/LogoHorizontalHead.webp" alt="Logo By Dycrea Impresiones 3D">   
+                <img src="img/LogoHorizontalHead.webp" alt="Logo By Dycrea Impresiones 3D">
             </div>
             <div class="header-actions">
                 <button class="icon-btn cart-btn" title="Tu Cotización" id="openCartBtnProd">
@@ -51,7 +60,7 @@
         </div>
 
         <div class="product-detail-layout" id="product-detail-content" style="display: none;">
-            
+
             <div class="product-gallery-wrapper">
                 <div class="product-gallery">
                     <span id="detail-badge" class="badge category hide-mobile">Categoría</span>
@@ -61,9 +70,9 @@
             </div>
 
             <div class="product-info-full">
-                <p class="stock-status ml-muted-text">Nuevo  |  <span id="detail-stock">Stock disponible</span></p>
+                <p class="stock-status ml-muted-text">Nuevo | <span id="detail-stock">Stock disponible</span></p>
                 <h2 id="detail-title">Título del Producto</h2>
-                
+
                 <div class="price-block">
                     <p id="detail-price" class="detail-price">$0</p>
                     <div class="ml-trust-badge">
@@ -121,16 +130,22 @@
                 <span>Total Estimado:</span>
                 <span id="cartTotalPrice">$0</span>
             </div>
-            
+
             <div style="margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px;">
-                
-                <input type="text" id="cart-nombre" placeholder="Tu Nombre y Apellido" maxlength="40" style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; outline: none;" required>
-                
+
+                <input type="text" id="cart-nombre" placeholder="Tu Nombre y Apellido" maxlength="40"
+                    style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; outline: none;"
+                    required>
+
                 <div style="position: relative; width: 100%;">
-                    <div style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 600; color: #64748b; user-select: none; border-right: 2px solid #e2e8f0; padding-right: 10px;">
+                    <div
+                        style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 600; color: #64748b; user-select: none; border-right: 2px solid #e2e8f0; padding-right: 10px;">
                         +56 9
                     </div>
-                    <input type="tel" id="cart-telefono" placeholder="1234 5678" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="padding: 12px 12px 12px 78px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; outline: none;" required>
+                    <input type="tel" id="cart-telefono" placeholder="1234 5678" maxlength="8"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        style="padding: 12px 12px 12px 78px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; outline: none;"
+                        required>
                 </div>
 
             </div>
@@ -148,29 +163,31 @@
                 <div class="payment-icons" style="display: flex; align-items: center; gap: 15px;">
                     <i class="fas fa-university" title="Transferencia Bancaria" style="font-size: 1.4rem;"></i>
                     <i class="fas fa-mobile-screen-button" title="Transferencia App" style="font-size: 1.4rem;"></i>
-                    <span style="font-size: 0.85rem; font-weight: 500; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px; margin-left: 5px;">
+                    <span
+                        style="font-size: 0.85rem; font-weight: 500; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px; margin-left: 5px;">
                         Pago vía Transferencia <br> o Billetera Digital (Mach/Tenpo)
                     </span>
                 </div>
-                </div>
+            </div>
         </div>
     </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script src="js/config.js"></script>
-    
+
     <script src="js/utils.js"></script>
-    
+
     <script src="js/carrito.js"></script>
-    
+
     <script src="js/producto.js"></script>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-      (function(){
-         emailjs.init({ publicKey: "kvgpYHpQPC-PGYBJh" });
-      })();
+        (function () {
+            emailjs.init({ publicKey: "kvgpYHpQPC-PGYBJh" });
+        })();
     </script>
 </body>
+
 </html>

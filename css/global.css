@@ -1,282 +1,37 @@
 /* ================================================
    GLOBAL.CSS — BY DYCREA IMPRESIONES 3D
-   ------------------------------------------------
-   ÍNDICE:
-   1.  Variables y Reset
-   2.  Tipografía base y Touch
-   3.  Header y Top Bar
-   4.  Buscador
-   5.  Carrito Lateral
-   6.  Toasts
-   7.  Footer
-   8.  Botón Colapsar Banner
-   9.  Strip Banner Colapsado
-   10. Formularios y Utilidades
-   11. ── MÓVIL ≤768px (bloque único) ──
+   (Componentes Generales y Utilidades)
    ================================================ */
 
-/* ── 1. VARIABLES Y RESET ─────────────────────── */
-:root {
-    --bg-body:         #f2f4f7;
-    --bg-white:        #ffffff;
-    --text-dark:       #1a1a1a;
-    --text-body:       #555555;
-    --text-light:      #9aa0aa;
-    --primary-accent:  #9ed615;
-    --primary-dark:    #7fac0d;
-    --secondary-brand: #0f172a;
-    --danger:          #ff4757;
-    --shadow-sm:       0 2px 8px rgba(0,0,0,0.05);
-    --shadow-md:       0 8px 24px rgba(0,0,0,0.09);
-    --border-light:    #eaecef;
-    --radius-md:       12px;
-    --radius-lg:       18px;
-    --nav-h:           60px;
-}
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg-body);
-    color: var(--text-body);
-    line-height: 1.6;
-    animation: fadeInPage 0.3s ease;
-    -webkit-font-smoothing: antialiased;
-    overscroll-behavior-y: none;
-}
-a  { text-decoration: none; color: inherit; }
+/* ── 1. ANIMACIONES Y ESTADOS INTERACTIVOS ── */
 @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
-
-/* ── 2. TIPOGRAFÍA BASE Y TOUCH ───────────────── */
-button, a, .icon-btn, .product-card {
-    -webkit-tap-highlight-color: transparent;
-    font-family: inherit;
+body {
+    animation: fadeInPage 0.3s ease;
 }
-button, .icon-btn, .product-card {
+
+button, a, .product-card {
     transition: transform 0.12s ease, opacity 0.12s;
 }
-button:active, .icon-btn:active, .product-card:active {
+button:active, .product-card:active {
     transform: scale(0.96) !important;
     opacity: 0.88;
 }
 
-/* ── 3. HEADER Y TOP BAR ─────────────────────── */
-.top-bar {
-    background: var(--secondary-brand);
-    color: rgba(255,255,255,0.75);
-    font-size: 0.78rem;
-    padding: 7px 5%;
-    display: flex;
-    justify-content: space-between;
-    font-weight: 300;
-    letter-spacing: 0.01em;
-}
-.top-bar i { color: var(--primary-accent); margin-right: 5px; }
-.ecommerce-header { background: var(--bg-white); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-.header-container { display: flex; align-items: center; justify-content: space-between; padding: 15px 5%; max-width: 1600px; margin: 0 auto; gap: 30px; }
-.brand { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-.brand img { height: 45px; border-radius: 8px; }
-.brand h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; color: var(--text-dark); }
-.header-search { flex: 1; max-width: 600px; display: flex; align-items: center; background: #f1f3f5; border-radius: 50px; padding: 5px; border: 1px solid transparent; transition: 0.3s; }
-.header-search:focus-within { background: var(--bg-white); border-color: var(--primary-accent); box-shadow: 0 0 0 3px rgba(158,214,21,0.2); }
-.header-search input { flex: 1; border: none; background: transparent; padding: 10px 20px; outline: none; font-size: 0.95rem; color: var(--text-dark); }
-.search-btn { background: var(--primary-accent); color: var(--secondary-brand); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-.search-btn:hover { background: var(--primary-dark); transform: scale(1.05); }
-.header-actions { display: flex; align-items: center; gap: 15px; }
-.icon-btn { background: transparent; border: none; font-size: 1.3rem; color: var(--text-dark); cursor: pointer; position: relative; transition: color 0.3s; padding: 5px; }
-.icon-btn:hover { color: var(--primary-accent); }
-.cart-badge {
-    position: absolute; top: -3px; right: -5px;
-    background: var(--danger); color: white;
-    font-size: 0.62rem; font-weight: 700;
-    width: 17px; height: 17px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    pointer-events: none;
-}
-
-/* ── 4. BUSCADOR ─────────────────────────────── */
-.header-search {
-    flex: 1; max-width: 580px;
-    display: flex; align-items: center;
-    background: #f0f2f5;
-    border-radius: 50px;
-    padding: 5px;
-    border: 1.5px solid transparent;
-    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-}
-.header-search:focus-within {
-    background: var(--bg-white);
-    border-color: var(--primary-accent);
-    box-shadow: 0 0 0 3px rgba(158,214,21,0.15);
-}
-.header-search input {
-    flex: 1; border: none; background: transparent;
-    padding: 9px 16px; outline: none;
-    font-size: 0.92rem; font-family: inherit; color: var(--text-dark);
-}
-.search-btn {
-    background: var(--primary-accent); color: var(--secondary-brand);
-    border: none; width: 40px; height: 40px;
-    border-radius: 50%; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.9rem; flex-shrink: 0;
-    transition: background 0.2s, transform 0.15s;
-}
-.search-btn:hover { background: var(--primary-dark); transform: scale(1.06); }
-
-/* ── 5. CARRITO LATERAL ──────────────────────── */
-.cart-overlay {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.46);
-    z-index: 999; display: none; opacity: 0;
-    transition: opacity 0.3s;
-}
-.cart-overlay.active { display: block; opacity: 1; }
-
-.cart-sidebar {
-    position: fixed; top: 0; right: -420px;
-    width: 400px; max-width: 100%; height: 100%;
-    background: var(--bg-white);
-    z-index: 1000;
-    box-shadow: -4px 0 24px rgba(0,0,0,0.1);
-    transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
-    display: flex; flex-direction: column;
-}
-.cart-sidebar.active { right: 0; }
-
-.cart-header {
-    padding: 20px 18px 16px;
-    display: flex; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid var(--border-light);
-}
-.cart-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--secondary-brand); }
-.close-cart {
-    background: #f1f5f9; border: none;
-    width: 38px; height: 38px; border-radius: 50%;
-    font-size: 1rem; cursor: pointer;
-    color: var(--text-dark);
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, color 0.2s;
-}
-.close-cart:hover { background: #fee2e2; color: var(--danger); }
-
-.cart-items { flex: 1; overflow-y: auto; padding: 16px; }
-.cart-item {
-    display: flex; gap: 13px;
-    margin-bottom: 16px; padding-bottom: 14px;
-    border-bottom: 1px solid var(--border-light);
-}
-.cart-item img { width: 66px; height: 66px; object-fit: cover; border-radius: 8px; background: #f5f5f5; }
-.cart-item-info { flex: 1; }
-.cart-item-title { font-size: 0.87rem; font-weight: 600; color: var(--text-dark); margin-bottom: 3px; line-height: 1.3; }
-.cart-item-price { font-size: 1rem; font-weight: 800; color: var(--primary-dark); }
-.btn-remove-item { background: none; border: none; color: var(--danger); font-size: 0.78rem; cursor: pointer; margin-top: 4px; }
-
-.cart-footer {
-    padding: 16px 18px 18px;
-    border-top: 1px solid var(--border-light);
-    background: #f9fafb;
-}
-.cart-total {
-    display: flex; justify-content: space-between;
-    font-size: 1.1rem; font-weight: 800; margin-bottom: 14px;
-    color: var(--secondary-brand);
-}
-.btn-checkout {
-    width: 100%; background: #25D366; color: white;
-    border: none; padding: 14px; border-radius: 30px;
-    font-size: 1rem; font-weight: 700; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    transition: background 0.2s, transform 0.15s;
-    font-family: inherit;
-}
-.btn-checkout:hover { background: #1ebe57; transform: translateY(-2px); }
-
-/* ── 6. TOASTS ───────────────────────────────── */
-#toast-container {
-    position: fixed; bottom: 26px; right: 26px;
-    z-index: 9999;
-    display: flex; flex-direction: column; gap: 10px;
-}
-.toast {
-    background: var(--secondary-brand); color: white;
-    padding: 13px 20px; border-radius: 10px;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.16);
-    display: flex; align-items: center; gap: 13px;
-    transform: translateX(120%); opacity: 0;
-    transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
-}
-.toast.show { transform: translateX(0); opacity: 1; }
-.toast-icon {
-    background: var(--primary-accent); color: var(--secondary-brand);
-    width: 27px; height: 27px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: bold; font-size: 0.85rem;
-}
-
-/* ── 7. FOOTER ───────────────────────────────── */
-.ecommerce-footer {
-    background: var(--secondary-brand); color: white;
-    padding: 52px 5% 0; margin-top: 50px;
-    font-size: 0.87rem; font-weight: 300;
-}
-.footer-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 32px; max-width: 1600px;
-    margin: 0 auto 48px;
-}
-
-/* Logo a la izquierda, texto a la derecha */
-.brand-column {
-    display: flex; flex-direction: row;
-    align-items: flex-start; gap: 16px;
-}
-.footer-logo { height: 68px; width: auto; object-fit: contain; flex-shrink: 0; }
-.brand-column-text { display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
-.brand-column-text p { color: #94a3b8; font-size: 0.83rem; line-height: 1.55; max-width: 220px; }
-.social-icons { display: flex; gap: 14px; font-size: 1.1rem; }
-.social-icons a { color: #64748b; transition: color 0.2s; }
-.social-icons a:hover { color: var(--primary-accent); }
-
-.footer-column h4 {
-    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; color: #475569; margin-bottom: 16px;
-}
-.accordion-content { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-.accordion-content li a { color: #94a3b8; font-size: 0.85rem; transition: color 0.2s; }
-.accordion-content li a:hover { color: var(--primary-accent); }
-.info-list li { display: flex; align-items: center; gap: 9px; color: #94a3b8; font-size: 0.85rem; margin-bottom: 8px; }
-.info-list i { color: var(--primary-accent); width: 15px; text-align: center; flex-shrink: 0; }
-.hide-desktop { display: none; }
-
-.footer-bottom {
-    background: rgba(0,0,0,0.22);
-    padding: 16px 5%; font-size: 0.76rem; color: #475569;
-}
-.footer-bottom-container {
-    max-width: 1600px; margin: 0 auto;
-    display: flex; justify-content: space-between; align-items: center;
-}
-.payment-icons { display: flex; align-items: center; gap: 10px; font-size: 1.15rem; color: #64748b; }
-.payment-icons span { font-size: 0.76rem; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 10px; }
-
-/* ── 8. BOTÓN COLAPSAR BANNER ────────────────── */
+/* ── 2. BOTÓN COLAPSAR BANNER Y STRIP ── */
 .banner-toggle-wrap {
     display: flex; justify-content: center;
-    height: 20px; position: relative; z-index: 20;
+    height: 0; position: relative; z-index: 20;
 }
 #btnCollapseBanner {
-    position: relative; top: -14px;
+    position: absolute; top: -14px;
     background: var(--bg-white); color: var(--text-light);
     border: 1px solid var(--border-light);
-    border-radius: 20px; height: 28px; padding: 0 13px; gap: 5px;
-    font-size: 0.69rem; font-family: inherit; font-weight: 500;
+    border-radius: 20px; height: 28px; padding: 0 15px; gap: 5px;
+    font-size: 0.7rem; font-family: inherit; font-weight: 600;
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    transition: color 0.2s, border-color 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
     white-space: nowrap;
 }
 #btnCollapseBanner::after  { content: "ocultar banner"; font-size: 0.67rem; }
@@ -286,7 +41,6 @@ button:active, .icon-btn:active, .product-card:active {
 #btnCollapseBanner:hover { color: var(--primary-dark); border-color: var(--primary-accent); }
 #btnCollapseBanner:hover::after { color: var(--primary-dark); }
 
-/* ── 9. STRIP BANNER COLAPSADO ───────────────── */
 .banner-collapsed-strip {
     display: none;
     align-items: center; justify-content: space-between;
@@ -298,7 +52,15 @@ button:active, .icon-btn:active, .product-card:active {
 .strip-offer { font-weight: 600; color: var(--primary-accent); }
 .banner-collapsed-strip.visible { display: flex; }
 
-/* ── 10. FORMULARIOS Y UTILIDADES ────────────── */
+/* ── 3. COMPONENTES GLOBALES (Imágenes y Botones) ── */
+.product-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.2s ease-in-out;
+}
+
 .btn-publicar {
     background: var(--secondary-brand); color: white;
     border: none; padding: 10px 20px; border-radius: 8px;
@@ -307,7 +69,7 @@ button:active, .icon-btn:active, .product-card:active {
 }
 .btn-publicar:hover { background: var(--primary-accent); color: var(--secondary-brand); }
 
-/* Checkbox personalizado (uso en index y panel) */
+/* ── 4. CHECKBOX PERSONALIZADO (Filtros y Panel) ── */
 .custom-checkbox {
     display: flex; align-items: center;
     margin-bottom: 10px; cursor: pointer;
@@ -329,186 +91,9 @@ button:active, .icon-btn:active, .product-card:active {
 }
 .custom-checkbox input:checked ~ .checkmark::after { display: block; }
 
-/* Desktop: ocultar bottom nav */
-.mobile-bottom-nav { display: none; }
-.hide-mobile { /* visible en desktop */ }
+/* ── 5. UTILIDADES RESPONSIVAS ── */
+.hide-mobile { display: inline-block; }
 
-/* ── 11. MÓVIL ≤768px ─────────────────────────
-   Bloque único — sin repetición
-   ──────────────────────────────────────────── */
 @media (max-width: 768px) {
     .hide-mobile { display: none !important; }
-    .top-bar { justify-content: center; } 
-    .header-container { flex-wrap: wrap; gap: 15px; padding: 15px 5%; }
-    .brand h1 { font-size: 1.3rem; }
-    .header-search { order: 3; flex: 0 0 100%; max-width: 100%; }
-    #toast-container { left: 20px; right: 20px; bottom: 20px; align-items: center; }
-    .toast { width: 100%; justify-content: center; }
-    
-    /* Footer Mobile */
-    .ecommerce-footer { padding: 40px 5% 0; }
-    .footer-container { grid-template-columns: 1fr; gap: 0; }
-    .brand-column { align-items: center; text-align: center; padding-bottom: 30px; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-    .accordion-item { margin-bottom: 10px; }
-    .accordion-header { display: flex; justify-content: space-between; align-items: center; background-color: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; cursor: pointer; user-select: none; }
-    .accordion-header i { font-size: 0.8rem; transition: transform 0.3s ease; }
-    .accordion-item.activo .accordion-header i { transform: rotate(180deg); }
-    .accordion-content { max-height: 0; overflow: hidden; transition: all 0.4s ease-in-out; padding: 0 15px; opacity: 0; }
-    .accordion-item.activo .accordion-content { max-height: 400px; padding: 15px; opacity: 1; }
-    .footer-bottom-container { flex-direction: column; gap: 15px; text-align: center; }
-
-    .cart-sidebar {
-        top: auto; bottom: -100%; right: 0 !important;
-        width: 100%; height: 90vh;
-        border-radius: 22px 22px 0 0;
-        transition: bottom 0.35s cubic-bezier(0.175,0.885,0.32,1.1) !important;
-        box-shadow: 0 -10px 40px rgba(0,0,0,0.14);
-    }
-    .cart-sidebar.active { bottom: 0; }
-    .cart-header { padding: 22px 18px 14px; position: relative; }
-    /* Pastilla gris tipo app nativa */
-    .cart-header::before {
-        content: ''; position: absolute; top: 9px; left: 50%;
-        transform: translateX(-50%);
-        width: 36px; height: 4px;
-        background: #e2e8f0; border-radius: 10px;
-    }
-    .close-cart { width: 40px; height: 40px; font-size: 1rem; }
-
-    /* Toasts centrados sobre nav */
-    #toast-container {
-        left: 14px; right: 14px;
-        bottom: calc(var(--nav-h) + 10px);
-        align-items: center;
-    }
-    .toast { width: 100%; justify-content: center; }
-
-    /* Footer: columna única con acordeones */
-    .ecommerce-footer { padding: 32px 5% 0; }
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 0; margin-bottom: 24px;
-    }
-    /* Columna marca: logo + texto en fila, compacto */
-    .brand-column {
-        flex-direction: row; align-items: center;
-        padding-bottom: 20px; margin-bottom: 4px;
-        border-bottom: 1px solid rgba(255,255,255,0.07);
-        gap: 14px;
-    }
-    .footer-logo { height: 46px; }
-    .brand-column-text p { font-size: 0.78rem; }
-    /* Acordeones */
-    .accordion-item { border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .accordion-header {
-        display: flex; justify-content: space-between; align-items: center;
-        padding: 13px 0; cursor: pointer; user-select: none;
-        font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
-        color: #475569; text-transform: uppercase;
-    }
-    .accordion-header i { font-size: 0.72rem; transition: transform 0.3s; }
-    .accordion-item.activo .accordion-header i { transform: rotate(180deg); }
-    .accordion-content {
-        max-height: 0; overflow: hidden; opacity: 0;
-        transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.25s ease;
-        padding: 0;
-    }
-    .accordion-item.activo .accordion-content { max-height: 280px; padding: 8px 0 16px; opacity: 1; }
-    .hide-desktop { display: inline-block !important; }
-    .footer-bottom { padding: 14px 5%; }
-    .footer-bottom-container { flex-direction: column; gap: 8px; text-align: center; }
-    .ecommerce-footer { padding-bottom: calc(var(--nav-h) + 20px) !important; }
-
-    /* ── Bottom Navigation ── */
-    .mobile-bottom-nav {
-        display: flex;
-        justify-content: space-around; align-items: center;
-        position: fixed; bottom: 0; left: 0; width: 100%;
-        background: var(--bg-white);
-        border-top: 1px solid var(--border-light);
-        box-shadow: 0 -3px 14px rgba(0,0,0,0.06);
-        padding: 8px 8px;
-        padding-bottom: env(safe-area-inset-bottom, 10px);
-        z-index: 900;
-        height: var(--nav-h);
-    }
-    .nav-item {
-        display: flex; flex-direction: column; align-items: center; gap: 2px;
-        color: var(--text-light); font-size: 0.65rem; font-weight: 500;
-        padding: 5px 18px; border-radius: 14px;
-        transition: color 0.2s, background 0.2s;
-    }
-    .nav-item i { font-size: 1.2rem; transition: transform 0.2s; }
-    .nav-item.active { color: var(--secondary-brand); background: rgba(158,214,21,0.13); }
-    .nav-item.active i { transform: translateY(-1px); color: var(--primary-dark); }
-    .mobile-badge { top: -5px; right: -8px; }
-}
-
-/* --- FIX LOGO --- */
-.brand img { 
-    height: 60px; /* Logo más grande en PC */
-    border-radius: 8px; 
-}
-@media (max-width: 768px) { 
-    .brand img { height: 48px; } /* Logo más grande en celular */
-}
-
-/* ---------------------------------- CAMBIOS 6-5 ---------------------------------- */
-
-/* --- FIX BOTÓN COLAPSAR BANNER --- */
-.banner-toggle-wrap {
-    display: flex; 
-    justify-content: center;
-    height: 0; /* Quitamos el alto fijo para que no corte el botón */
-    position: relative; 
-    z-index: 20;
-}
-#btnCollapseBanner {
-    position: absolute; /* Lo sacamos del flujo para que no se coma el espacio */
-    top: -14px;
-    background: var(--bg-white); 
-    color: var(--text-light);
-    border: 1px solid var(--border-light);
-    border-radius: 20px; 
-    height: 28px; 
-    padding: 0 15px;
-    font-size: 0.7rem; 
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Sombra para que flote mejor */
-    transition: all 0.3s ease;
-}
-
-/* --- FIX IMÁGENES SLIDER --- */
-.product-image {
-    width: 100%;
-    aspect-ratio: 1 / 1; /* Fuerza a que sea siempre un cuadrado perfecto */
-    object-fit: cover;   /* Recorta el sobrante sin deformar la imagen */
-    object-position: center;
-    transition: opacity 0.2s ease-in-out;
-}
-
-/* =========================================
-   AGRANDAR LOGOS SOLO EN EL INICIO (EXTRA GRANDE)
-   ========================================= */
-
-/* Logo Header (Horizontal) */
-.ecommerce-header .brand img {
-    height: 130px !important; /* Aumentado a 160px para PC */
-}
-
-/* Logo Footer (Centrado) */
-.ecommerce-footer .footer-logo {
-    height: 200px !important; /* Aumentado a 200px para PC */
-}
-
-/* --- Ajustes proporcionales para Celulares (Móvil) --- */
-@media (max-width: 768px) {
-    .ecommerce-header .brand img {
-        height: 60px !important; /* Aumentado a 100px para móviles */
-    }
-    
-    .ecommerce-footer .footer-logo {
-        height: 130px !important; /* Aumentado a 130px para móviles */
-    }
 }

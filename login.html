@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +10,125 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/inicio.css">
     <link rel="stylesheet" href="css/global.css">
+    
     <style>
-        body { display: flex; align-items: center; justify-content: center; min-height: 100vh; background-color: #f0f2f5; margin: 0; }
-        .login-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); width: 100%; max-width: 400px; text-align: center; }
-        .login-card img { width: 80px; border-radius: 12px; margin-bottom: 20px; }
-        .login-card h2 { color: var(--secondary-brand); font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; }
-        .login-card p { color: var(--text-light); margin-bottom: 30px; font-size: 0.95rem; }
-        .input-group { text-align: left; margin-bottom: 20px; }
-        .input-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: var(--text-dark); }
-        .input-group input { width: 100%; padding: 14px 18px; border: 2px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s; background-color: #f8fafc; }
-        .input-group input:focus { border-color: var(--primary-accent); background-color: white; }
-        .btn-login { width: 100%; padding: 15px; background: var(--secondary-brand); color: white; border: none; border-radius: 30px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 10px; }
-        .btn-login:hover { background: var(--primary-accent); color: var(--secondary-brand); transform: translateY(-2px); }
-        #login-error { color: var(--danger); font-size: 0.9rem; margin-top: 15px; font-weight: 600; display: none; }
-        .back-link { display: inline-block; margin-top: 25px; font-size: 0.9rem; color: var(--text-light); transition: 0.3s; }
-        .back-link:hover { color: var(--primary-accent); }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-card img {
+            width: 80px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .login-card h2 {
+            color: var(--secondary-brand);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .login-card p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+            background-color: #f8fafc;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-accent);
+            background-color: white;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: var(--secondary-brand);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background: var(--primary-accent);
+            color: var(--secondary-brand);
+            transform: translateY(-2px);
+        }
+
+        #login-error {
+            color: var(--danger);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--primary-accent);
+        }
     </style>
 </head>
+
 <body>
 
     <div class="login-card">
@@ -58,7 +160,7 @@
             e.preventDefault();
             const btn = document.getElementById('btn-login');
             const errorMsg = document.getElementById('login-error');
-            
+
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verificando...';
             btn.disabled = true;
             errorMsg.style.display = 'none';
@@ -86,4 +188,5 @@
         });
     </script>
 </body>
+
 </html>

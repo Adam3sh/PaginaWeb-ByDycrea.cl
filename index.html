@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,12 @@
     <link rel="icon" href="img/favicon.ico" type="image/webp">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tu-dominio.cl/"> <meta property="og:title" content="By Dycrea | Impresiones 3D y Figuras Coleccionables">
-    <meta property="og:description" content="Venta de figuras 3D, repuestos técnicos y servicios de impresión en Santiago. Calidad premium y envíos a domicilio.">
-    <meta property="og:image" content="https://tu-dominio.cl/img/logo-impresiones.webp"> <meta property="twitter:card" content="summary_large_image">
+    <meta property="og:url" content="https://tu-dominio.cl/">
+    <meta property="og:title" content="By Dycrea | Impresiones 3D y Figuras Coleccionables">
+    <meta property="og:description"
+        content="Venta de figuras 3D, repuestos técnicos y servicios de impresión en Santiago. Calidad premium y envíos a domicilio.">
+    <meta property="og:image" content="https://tu-dominio.cl/img/logo-impresiones.webp">
+    <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="By Dycrea | Impresiones 3D">
     <meta property="twitter:description" content="Descubre nuestro catálogo de figuras 3D y servicios de impresión.">
     <meta property="twitter:image" content="https://tu-dominio.cl/img/logo-impresiones.webp">
@@ -18,15 +22,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/inicio.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/inicio.css">
-    <meta name="description" content="By Dycrea: Venta de figuras 3D coleccionables, repuestos técnicos y servicios de impresión 3D en Santiago de Chile.">
+    
+    <meta name="description"
+        content="By Dycrea: Venta de figuras 3D coleccionables, repuestos técnicos y servicios de impresión 3D en Santiago de Chile.">
     <meta name="keywords" content="impresión 3d, figuras 3d, filamento, resina, dycrea, santiago, chile">
 
     <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
+
 <body>
 
     <div class="top-bar">
@@ -38,7 +51,7 @@
     <header class="ecommerce-header">
         <div class="header-container">
             <div class="brand" onclick="window.location.href='index.html'">
-                <img src="img/LogoHorizontalHead.webp" alt="Logo By Dycrea Impresiones 3D"> 
+                <img src="img/LogoHorizontalHead.webp" alt="Logo By Dycrea Impresiones 3D">
             </div>
 
             <div class="header-actions">
@@ -76,7 +89,7 @@
 
         <aside class="sidebar" id="sidebarFiltros">
             <h3 class="sidebar-title"><i class="fas fa-sliders-h"></i> Filtros</h3>
-            
+
             <div class="filter-section">
                 <h4>Categorías</h4>
                 <ul class="category-list" id="lista-categorias-sidebar">
@@ -103,7 +116,7 @@
             </div>
 
             <div class="products-grid" id="contenedor-productos">
-                </div>
+            </div>
         </section>
     </main>
 
@@ -123,16 +136,22 @@
                 <span>Total Estimado:</span>
                 <span id="cartTotalPrice">$0</span>
             </div>
-            
+
             <div style="margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px;">
-                
-                <input type="text" id="cart-nombre" placeholder="Tu Nombre y Apellido" maxlength="40" style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; outline: none;" required>
-                
+
+                <input type="text" id="cart-nombre" placeholder="Tu Nombre y Apellido" maxlength="40"
+                    style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; outline: none;"
+                    required>
+
                 <div style="position: relative; width: 100%;">
-                    <div style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 600; color: #64748b; user-select: none; border-right: 2px solid #e2e8f0; padding-right: 10px;">
+                    <div
+                        style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 600; color: #64748b; user-select: none; border-right: 2px solid #e2e8f0; padding-right: 10px;">
                         +56 9
                     </div>
-                    <input type="tel" id="cart-telefono" placeholder="1234 5678" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="padding: 12px 12px 12px 78px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; outline: none;" required>
+                    <input type="tel" id="cart-telefono" placeholder="1234 5678" maxlength="8"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        style="padding: 12px 12px 12px 78px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; outline: none;"
+                        required>
                 </div>
 
             </div>
@@ -150,8 +169,10 @@
                 <div class="brand-column-text">
                     <p>Impresiones 3D en Santiago de Chile. Figuras coleccionables, repuestos técnicos y más.</p>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/by_dycrea_impesiones3d?igsh=MWJtb2RqMWR4dDlldw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@by.dycrea.3d?_r=1&_t=ZS-94OZaruPP8c" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/by_dycrea_impesiones3d?igsh=MWJtb2RqMWR4dDlldw=="
+                            target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@by.dycrea.3d?_r=1&_t=ZS-94OZaruPP8c" target="_blank"
+                            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
@@ -162,7 +183,8 @@
                 </h4>
                 <ul class="accordion-content">
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="#" onclick="event.preventDefault(); abrirCarrito();"><i class="fas fa-shopping-cart"></i> Mi Cotización</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); abrirCarrito();"><i
+                                class="fas fa-shopping-cart"></i> Mi Cotización</a></li>
                     <li><a href="login.html">Acceso Vendedor</a></li>
                 </ul>
             </div>
@@ -192,63 +214,64 @@
     </footer>
 
     <nav class="mobile-bottom-nav">
-    <a href="index.html" class="nav-item active">
-        <i class="fas fa-home"></i>
-        <span>Inicio</span>
-    </a>
-    <a href="#" class="nav-item" id="btnToggleFiltrosMobile">
-        <i class="fas fa-search"></i>
-        <span>Explorar</span>
-    </a>
-    <a href="#" class="nav-item cart-btn">
-        <div style="position: relative;">
-            <i class="fas fa-shopping-bag"></i>
-            <span class="cart-badge mobile-badge">0</span>
-        </div>
-        <span>Carrito</span>
-    </a>
-</nav>
+        <a href="index.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="#" class="nav-item" id="btnToggleFiltrosMobile">
+            <i class="fas fa-search"></i>
+            <span>Explorar</span>
+        </a>
+        <a href="#" class="nav-item cart-btn">
+            <div style="position: relative;">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge mobile-badge">0</span>
+            </div>
+            <span>Carrito</span>
+        </a>
+    </nav>
 
- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script src="js/config.js"></script>
-    
+
     <script src="js/utils.js"></script>
-    
+
     <script src="js/carrito.js"></script>
-    
+
     <script src="js/main.js"></script>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
-    // === COLAPSAR / EXPANDIR BANNER ===
-    (function() {
-        const banner = document.getElementById('hero-slider-container');
-        const btn    = document.getElementById('btnCollapseBanner');
-        const KEY    = 'dycrea_banner_oculto';
+        // === COLAPSAR / EXPANDIR BANNER ===
+        (function () {
+            const banner = document.getElementById('hero-slider-container');
+            const btn = document.getElementById('btnCollapseBanner');
+            const KEY = 'dycrea_banner_oculto';
 
-        function aplicar(oculto, animate) {
-            const dur = animate ? '0.4s' : '0s';
-            banner.style.transition = `max-height ${dur} ease, opacity ${dur} ease`;
-            if (oculto) {
-                banner.style.maxHeight = '0';
-                banner.style.opacity   = '0';
-                btn.classList.add('colapsado');
-            } else {
-                banner.style.maxHeight = '520px';
-                banner.style.opacity   = '1';
-                btn.classList.remove('colapsado');
+            function aplicar(oculto, animate) {
+                const dur = animate ? '0.4s' : '0s';
+                banner.style.transition = `max-height ${dur} ease, opacity ${dur} ease`;
+                if (oculto) {
+                    banner.style.maxHeight = '0';
+                    banner.style.opacity = '0';
+                    btn.classList.add('colapsado');
+                } else {
+                    banner.style.maxHeight = '520px';
+                    banner.style.opacity = '1';
+                    btn.classList.remove('colapsado');
+                }
             }
-        }
 
-        aplicar(sessionStorage.getItem(KEY) === '1', false);
+            aplicar(sessionStorage.getItem(KEY) === '1', false);
 
-        btn.addEventListener('click', () => {
-            const ocultar = banner.style.maxHeight !== '0px';
-            sessionStorage.setItem(KEY, ocultar ? '1' : '0');
-            aplicar(ocultar, true);
-        });
-    })();
+            btn.addEventListener('click', () => {
+                const ocultar = banner.style.maxHeight !== '0px';
+                sessionStorage.setItem(KEY, ocultar ? '1' : '0');
+                aplicar(ocultar, true);
+            });
+        })();
     </script>
 </body>
+
 </html>

@@ -1,0 +1,75 @@
+/* ================================================
+   FOOTER.CSS — DISEÑO ORIGINAL BY DYCREA
+   ================================================ */
+
+/* ── 1. ESTRUCTURA PRINCIPAL ── */
+.ecommerce-footer {
+    background: var(--secondary-brand); color: white;
+    padding: 52px 5% 0; margin-top: 50px;
+    font-size: 0.87rem; font-weight: 300;
+}
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 32px; max-width: 1600px;
+    margin: 0 auto 48px;
+}
+
+/* ── 2. COLUMNA DE MARCA ── */
+.brand-column { display: flex; flex-direction: row; align-items: flex-start; gap: 16px; }
+.footer-logo { height: 200px; width: auto; object-fit: contain; flex-shrink: 0; }
+.brand-column-text { display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
+.brand-column-text p { color: #94a3b8; font-size: 0.83rem; line-height: 1.55; max-width: 220px; }
+
+/* Redes */
+.social-icons { display: flex; gap: 14px; font-size: 1.1rem; }
+.social-icons a { color: #64748b; transition: color 0.2s; }
+.social-icons a:hover { color: var(--primary-accent); }
+
+/* ── 3. COLUMNAS DE INFORMACIÓN ── */
+.footer-column h4 {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #475569; margin-bottom: 16px;
+}
+.accordion-content { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.accordion-content li a { color: #94a3b8; font-size: 0.85rem; transition: color 0.2s; }
+.accordion-content li a:hover { color: var(--primary-accent); }
+
+.info-list li { display: flex; align-items: center; gap: 9px; color: #94a3b8; font-size: 0.85rem; margin-bottom: 8px; }
+.info-list i { color: var(--primary-accent); width: 15px; text-align: center; flex-shrink: 0; }
+
+.hide-desktop { display: none; }
+
+/* ── 4. BARRA INFERIOR (COPYRIGHT) ── */
+.footer-bottom {
+    background: rgba(0,0,0,0.22);
+    padding: 16px 5%; font-size: 0.76rem; color: #475569;
+}
+.footer-bottom-container {
+    max-width: 1600px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.payment-icons { display: flex; align-items: center; gap: 10px; font-size: 1.15rem; color: #64748b; }
+.payment-icons span { font-size: 0.76rem; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 10px; }
+
+/* ── ADAPTACIÓN MÓVIL (Como el original) ── */
+@media (max-width: 768px) {
+    .ecommerce-footer { padding: 32px 5% 0; padding-bottom: 80px !important; }
+    .footer-container { grid-template-columns: 1fr; gap: 0; margin-bottom: 24px; }
+    
+    .brand-column { flex-direction: row; align-items: center; justify-content: center; padding-bottom: 20px; margin-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.07); gap: 14px; text-align: center; }
+    .footer-logo { height: 130px; }
+    .brand-column-text p { font-size: 0.78rem; text-align: left;}
+
+    /* Acordeones Móviles */
+    .accordion-item { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 13px 0; cursor: pointer; user-select: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: #475569; text-transform: uppercase; }
+    .accordion-header i { font-size: 0.72rem; transition: transform 0.3s; }
+    .accordion-item.activo .accordion-header i { transform: rotate(180deg); }
+    .accordion-content { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.25s ease; padding: 0; }
+    .accordion-item.activo .accordion-content { max-height: 280px; padding: 8px 0 16px; opacity: 1; }
+    .hide-desktop { display: inline-block !important; }
+
+    .footer-bottom { padding: 14px 5%; }
+    .footer-bottom-container { flex-direction: column; gap: 8px; text-align: center; }
+}

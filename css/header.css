@@ -1,0 +1,93 @@
+/* ================================================
+   HEADER.CSS — DISEÑO ORIGINAL BY DYCREA
+   ================================================ */
+
+/* ── 1. TOP BAR ORIGINAL ── */
+.top-bar {
+    background: var(--secondary-brand);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.78rem;
+    padding: 7px 5%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+}
+.top-bar i { color: var(--primary-accent); margin-right: 5px; }
+
+/* ── 2. HEADER ORIGINAL ── */
+.ecommerce-header { 
+    background: var(--bg-white); 
+    position: sticky; top: 0; z-index: 100; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+    transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+.header-container { 
+    display: flex; align-items: center; justify-content: space-between; 
+    padding: 15px 5%; max-width: 1600px; margin: 0 auto; gap: 30px; 
+}
+
+/* ── 3. LOGO Y MARCA ── */
+.brand { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.brand img { 
+    height: 130px; 
+    border-radius: 8px; 
+    transition: height 0.3s ease; 
+}
+
+/* ── 4. BUSCADOR ORIGINAL ── */
+.header-search { 
+    flex: 1; max-width: 580px; display: flex; align-items: center; 
+    background: #f0f2f5; border-radius: 50px; padding: 5px; 
+    border: 1.5px solid transparent; transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; 
+}
+.header-search:focus-within { 
+    background: var(--bg-white); border-color: var(--primary-accent); 
+    box-shadow: 0 0 0 3px rgba(158,214,21,0.15); 
+}
+.header-search input { 
+    flex: 1; border: none; background: transparent; padding: 9px 16px; 
+    outline: none; font-size: 0.92rem; font-family: inherit; color: var(--text-dark); 
+}
+.search-btn { 
+    background: var(--primary-accent); color: var(--secondary-brand); border: none; 
+    width: 40px; height: 40px; border-radius: 50%; cursor: pointer; 
+    display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; 
+    transition: background 0.2s, transform 0.15s; 
+}
+.search-btn:hover { background: var(--primary-dark); transform: scale(1.06); }
+
+/* ── 5. ICONOS Y ACCIONES ── */
+.header-actions { display: flex; align-items: center; gap: 15px; }
+.icon-btn { background: transparent; border: none; font-size: 1.3rem; color: var(--text-dark); cursor: pointer; position: relative; transition: color 0.3s; padding: 5px; }
+.icon-btn:hover { color: var(--primary-accent); }
+.cart-badge { position: absolute; top: -3px; right: -5px; background: var(--danger); color: white; font-size: 0.62rem; font-weight: 700; width: 17px; height: 17px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+
+/* ── 6. NAVEGACIÓN MÓVIL ── */
+.mobile-bottom-nav { display: none; }
+
+/* ── ADAPTACIÓN MÓVIL (Como el original) ── */
+@media (max-width: 768px) {
+    .top-bar { justify-content: center; } 
+    .header-container { flex-wrap: wrap; gap: 15px; padding: 15px 5%; }
+    .header-search { order: 3; flex: 0 0 100%; max-width: 100%; }
+    .brand img { height: 60px; }
+    
+    .mobile-bottom-nav {
+        display: flex; justify-content: space-around; align-items: center;
+        position: fixed; bottom: 0; left: 0; width: 100%;
+        background: var(--bg-white); border-top: 1px solid var(--border-light);
+        box-shadow: 0 -3px 14px rgba(0,0,0,0.06); padding: 8px;
+        padding-bottom: env(safe-area-inset-bottom, 10px); z-index: 900;
+        height: 60px;
+    }
+    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--text-light); font-size: 0.65rem; font-weight: 500; padding: 5px 18px; border-radius: 14px; transition: color 0.2s, background 0.2s; }
+    .nav-item i { font-size: 1.2rem; transition: transform 0.2s; }
+    .nav-item.active { color: var(--secondary-brand); background: rgba(158,214,21,0.13); }
+    .nav-item.active i { transform: translateY(-1px); color: var(--primary-dark); }
+}
+
+/* ── EFECTO DE SCROLL QUE AÑADIMOS ── */
+.ecommerce-header.shrunk { padding-top: 5px !important; padding-bottom: 5px !important; }
+@media (min-width: 768px) { .ecommerce-header.shrunk .brand img { height: 75px !important; } }
+@media (max-width: 767px) { .ecommerce-header.shrunk .brand img { height: 45px !important; } }
