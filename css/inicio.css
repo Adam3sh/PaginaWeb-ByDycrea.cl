@@ -188,6 +188,16 @@
 .skeleton-price { height: 22px; width: 38%; margin: auto 14px 14px; border-radius: 4px; }
 @keyframes shimmer { to { background-position-x: -200%; } }
 
+/* =========================================
+   OCULTAR PANELES MÓVILES EN DESKTOP
+========================================= */
+
+.ui-sidebar,
+.ui-overlay,
+.mobile-actions-bar {
+    display: none;
+}
+
 /* ── 6. MÓVIL ≤768px ─────────────────────────
    Diseño rediseñado — bloque único
    ──────────────────────────────────────────── */
