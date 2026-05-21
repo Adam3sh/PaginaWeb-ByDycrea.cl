@@ -1,69 +1,264 @@
-/* === ESTILO MERCADO LIBRE (PRODUCTO) === */
-.ml-trust-badge { display: flex; align-items: flex-start; gap: 15px; margin-top: 15px; }
-.ml-trust-badge i { color: #00a650; font-size: 1.2rem; margin-top: 2px; }
-.ml-green-text { color: #00a650; font-size: 0.95rem; font-weight: 500; margin: 0; line-height: 1.2; }
-.ml-sub-text { color: rgba(0,0,0,0.55); font-size: 0.85rem; margin: 0; line-height: 1.4; }
-.ml-muted-text { color: rgba(0,0,0,0.55); font-size: 0.85rem; font-weight: 400; margin-bottom: 5px; }
+/* ==========================================================================
+   DETALLE.CSS — VISTA DE PRODUCTO PREMIUM (ESTILO MERCADO LIBRE)
+   ========================================================================== */
 
-.product-detail-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; background: var(--bg-white); padding: 40px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); max-width: 1200px; margin: 0 auto; }
-.product-gallery-wrapper { display: flex; flex-direction: column; gap: 15px; }
-.product-gallery { position: relative; background: #f8fafc; border-radius: var(--radius-md); overflow: hidden; display: flex; align-items: center; justify-content: center; aspect-ratio: 1 / 1; width: 100%; max-height: 550px; }
-.main-detail-image { width: 100%; height: 100%; object-fit: contain; padding: 20px; }
-.product-gallery .badge { position: absolute; top: 20px; left: 20px; font-size: 0.9rem; padding: 8px 15px; }
+/* --- CONTENEDOR PRINCIPAL --- */
+.product-detail-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* Columna de galería más ancha */
+    gap: 48px;
+    background: var(--bg-white, #ffffff);
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    max-width: 1200px;
+    margin: 40px auto;
+    align-items: start;
+}
+
+/* --- BLOQUE IZQUIERDO: GALERÍA --- */
+.product-gallery-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 110px; /* Se queda fijo en PC al hacer scroll hacia abajo */
+}
+
+.product-gallery {
+    position: relative;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1; /* Cuadrado perfecto, estándar e-commerce */
+}
+
+#detail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Evita CUALQUIER tipo de deformación o estiramiento */
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
 
 /* Miniaturas */
-.thumbnails-container { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
-.thumbnail { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; transition: 0.3s; }
-.thumbnail:hover, .thumbnail.active { opacity: 1; border-color: var(--primary-accent); }
+#thumbnails-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
 
-/* Textos e Info */
-.product-info-full { display: flex; flex-direction: column; }
-.stock-status { color: #27ae60; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px; }
-#detail-title { font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; color: var(--secondary-brand); }
-.price-block { padding-bottom: 20px; border-bottom: 1px solid var(--border-light); margin-bottom: 25px; }
-.detail-price { font-size: 2.5rem; font-weight: 800; color: var(--primary-dark); }
-.detail-description h3, .specs-box h3 { font-size: 1.2rem; color: var(--secondary-brand); margin-bottom: 15px; }
-.detail-description p { color: var(--text-body); line-height: 1.7; margin-bottom: 30px; }
+#thumbnails-container img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
 
-/* Tabla Specs */
-.specs-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
-.specs-list { list-style: none; padding: 0; }
-.specs-list li { padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; }
-.specs-list li:last-child { border-bottom: none; }
+#thumbnails-container img:hover,
+#thumbnails-container img.active {
+    border-color: var(--secondary-brand, #0f172a);
+    transform: scale(1.05);
+}
 
-.btn-whatsapp-large { width: 100%; background: #25D366; color: white; border: none; padding: 18px; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
-.btn-whatsapp-large:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6); }
+/* --- BLOQUE DERECHO: INFORMACIÓN Y COMPRA --- */
+.product-info-panel {
+    display: flex;
+    flex-direction: column;
+}
 
-/* DETALLE MOBILE */
+#detail-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-dark, #0f172a);
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+/* Precios */
+.price-block {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.detail-price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--secondary-brand, #0f172a);
+    letter-spacing: -0.5px;
+}
+
+/* Variantes (Selectores limpios) */
+.specs-box {
+    margin-bottom: 24px;
+}
+
+.specs-box h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+}
+
+.selector-variante {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background-color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: border-color 0.2s;
+}
+
+.selector-variante:focus {
+    border-color: var(--secondary-brand, #0f172a);
+}
+
+/* Ficha Técnica Estilo Mercado Libre */
+.ml-table {
+    list-style: none;
+    padding: 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.ml-table li {
+    display: flex;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.9rem;
+}
+
+.ml-table li:last-child {
+    border-bottom: none;
+}
+
+.ml-table li strong {
+    width: 35%;
+    padding: 12px;
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+}
+
+.ml-table li span {
+    width: 65%;
+    padding: 12px;
+    color: #334155;
+    background: #ffffff;
+}
+
+/* Trust Badges (Garantías) */
+.ml-trust-badge {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 12px;
+    background: #f0fdf4;
+    border-radius: 8px;
+}
+
+.ml-trust-badge i {
+    color: #16a34a;
+    font-size: 1.1rem;
+    margin-top: 2px;
+}
+
+.ml-green-text {
+    color: #16a34a;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.ml-sub-text {
+    color: #64748b;
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   ANULACIÓN Y LIMPIEZA PARA DISPOSITIVOS MÓVILES (≤ 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
-    .ml-style-main { padding: 0 !important; background-color: #ebebeb; }
-    .product-detail-layout { grid-template-columns: 1fr; padding: 0; gap: 8px; background: transparent; box-shadow: none; }
-    
-    .product-gallery-wrapper { background: var(--bg-white); padding: 0 0 15px 0; }
-    .product-gallery { border-radius: 0; aspect-ratio: 1 / 1; max-height: none; }
-    .main-detail-image { padding: 0; } 
-    
-    .thumbnails-container { padding: 0 15px; margin-top: 10px; scrollbar-width: none; }
-    .thumbnails-container::-webkit-scrollbar { display: none; }
-    .thumbnail { width: 50px; height: 50px; border-radius: 4px; border-width: 2px; }
+    /* Ocultar barra de navegación inferior fija y menús molestos que roban espacio en el detalle */
+    .mobile-bottom-nav, 
+    .mobile-actions-bar,
+    .banner-toggle-wrap {
+        display: none !important;
+    }
 
-    .product-info-full { background: var(--bg-white); padding: 20px 15px; border-radius: 0; }
-    #detail-title { font-size: 1.1rem; font-weight: 400; color: #333; margin-bottom: 15px; line-height: 1.3; }
-    .detail-price { font-size: 2.2rem; font-weight: 300; color: #333; letter-spacing: -1px; }
-    .price-block { margin-bottom: 30px; padding-bottom: 0; border: none; }
+    /* Ajuste del cuerpo para recuperar el espacio del footer flotante */
+    body {
+        padding-bottom: 0 !important;
+    }
 
-    .specs-box { background: transparent; padding: 0; margin-bottom: 30px; }
-    .specs-box h3, .detail-description h3 { font-size: 1.1rem; font-weight: 400; color: #333; margin-bottom: 20px; }
-    .ml-table { border: 1px solid #ededed; border-radius: 8px; overflow: hidden; }
-    .ml-table li { display: flex; padding: 0; border-bottom: none; }
-    .ml-table li:nth-child(odd) { background-color: #f5f5f5; }
-    .ml-table li:nth-child(even) { background-color: #ffffff; }
-    .ml-table li strong { width: 40%; padding: 12px 15px; background: #ebebeb; color: #333; font-weight: 600; font-size: 0.85rem; }
-    .ml-table li span { width: 60%; padding: 12px 15px; color: #333; font-size: 0.9rem; }
-    .detail-description p { font-size: 1rem; color: #666; line-height: 1.5; }
+    /* Pasar a flujo vertical completo sin tarjetas separadas raras */
+    .product-detail-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 16px;
+        margin: 0 auto;
+        box-shadow: none;
+        border-radius: 0;
+        background: #ffffff;
+    }
 
-    .action-buttons-full { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-white); padding: 10px 15px; border-top: 1px solid #e6e6e6; z-index: 100; }
-    .ml-btn { border-radius: 6px; padding: 16px; font-size: 1rem; font-weight: 600; box-shadow: none; }
-    .ml-btn:hover { box-shadow: none; transform: scale(0.98); }
-    .ecommerce-footer { padding-bottom: 100px !important; } 
+    /* La galería deja de ser sticky y se adapta al ancho de la pantalla táctil */
+    .product-gallery-wrapper {
+        position: static;
+    }
+
+    .product-gallery {
+        border-radius: 8px;
+        border: none;
+        background: #ffffff; /* Fondo limpio para destacar la figura */
+    }
+
+    #detail-image {
+        padding: 5px; /* Aprovecha el máximo espacio del viewport */
+    }
+
+    /* Tipografías e info más compactas en móvil */
+    #detail-title {
+        font-size: 1.3rem;
+        margin-top: 10px;
+    }
+
+    .detail-price {
+        font-size: 1.8rem;
+    }
+
+    /* Optimización de la tabla técnica en pantallas angostas */
+    .ml-table li {
+        flex-direction: column;
+    }
+
+    .ml-table li strong {
+        width: 100%;
+        padding: 8px 12px;
+        background: #f1f5f9;
+        font-size: 0.8rem;
+    }
+
+    .ml-table li span {
+        width: 100%;
+        padding: 8px 12px;
+    }
 }

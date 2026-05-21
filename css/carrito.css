@@ -151,3 +151,45 @@
         transform: none;
     }
 }
+
+/* ==========================================================================
+   BOTÓN "AGREGAR AL CARRITO" PREMIUM
+   ========================================================================== */
+.action-buttons-full {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-add-cart-large {
+    width: 100%;
+    background-color: #3483fa; /* Azul característico de Mercado Libre */
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: inherit;
+    padding: 18px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 14px rgba(52, 131, 250, 0.25);
+}
+
+.btn-add-cart-large i {
+    font-size: 1.3rem;
+}
+
+.btn-add-cart-large:hover {
+    background-color: #2968c8;
+    box-shadow: 0 6px 20px rgba(52, 131, 250, 0.4);
+}
+
+.btn-add-cart-large:active {
+    transform: scale(0.97); /* Efecto de "hundimiento" al tocarlo en el celular */
+}
