@@ -154,4 +154,4 @@
 /* ── 8. EFECTO DE SCROLL EN ESCRITORIO ── */
 .ecommerce-header.shrunk { padding-top: 5px !important; padding-bottom: 5px !important; }
 @media (min-width: 768px) { .ecommerce-header.shrunk .brand img { height: 75px !important; } }
-@media (max-width: 767px) { .ecommerce-header.shrunk .brand img { height: 40px !important; } }
+/*@media (max-width: 767px) { .ecommerce-header.shrunk .brand img { height: 40px !important; } }
