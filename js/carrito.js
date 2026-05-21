@@ -49,12 +49,14 @@ window.renderizarCarrito = function() {
         const div = document.createElement('div');
         div.className = 'cart-item';
         div.innerHTML = `
-            <img src="${item.imagen}" alt="${item.titulo}" loading="lazy">
+            <img src="${item.imagen}" alt="${item.titulo}" class="cart-item-img" loading="lazy">
             <div class="cart-item-info">
                 <div class="cart-item-title">${item.titulo}</div>
                 ${variantesHTML}
                 ${precioInfo}
-                <button class="btn-remove-item" onclick="eliminarDelCarrito(${index})"><i class="fas fa-trash"></i> Quitar</button>
+                <button class="btn-remove-item" onclick="eliminarDelCarrito(${index})">
+                    <i class="fas fa-trash"></i> Quitar
+                </button>
             </div>
         `;
         container.appendChild(div);
