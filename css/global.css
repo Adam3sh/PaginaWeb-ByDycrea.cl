@@ -21,7 +21,10 @@ button:active, .product-card:active {
 .banner-toggle-wrap {
     display: flex; justify-content: center;
     height: 0; position: relative; z-index: 20;
-}
+    margin-bottom: 18px;
+    z-index: 15;
+    position: relative;
+    }
 #btnCollapseBanner {
     position: absolute; top: -14px;
     background: var(--bg-white); color: var(--text-light);
