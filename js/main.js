@@ -257,6 +257,122 @@ window.cambiarSlide = function(index) {
     document.querySelectorAll('#hero-slider-container .slider-dot').forEach((d, i) => d.classList.toggle('active', i === index));
 };
 
+// === CONTROL DE INTERACCIONES PREMIUM DEL HEADER MÓVIL ===
+document.addEventListener('DOMContentLoaded', () => {
+    const btnToggleSearch = document.getElementById('btnToggleSearchMobile');
+    const searchBox = document.getElementById('searchBoxMobile');
+    const btnToggleMenu = document.getElementById('btnToggleMenuMobile');
+
+    // Desplegar/Ocultar buscador en celular
+    if (btnToggleSearch && searchBox) {
+        btnToggleSearch.addEventListener('click', (e) => {
+            e.stopPropagation();
+            searchBox.classList.toggle('active');
+            
+            // Foco automático en el input al abrir
+            if (searchBox.classList.contains('active')) {
+                searchBox.querySelector('input')?.focus();
+            }
+        });
+    }
+
+    // Comportamiento del botón de menú izquierdo
+    if (btnToggleMenu) {
+        btnToggleMenu.addEventListener('click', () => {
+            // Vinculado al panel lateral de filtros ya existente en tu interfaz
+            const sidebarFiltros = document.getElementById('sidebarFiltros');
+            if (sidebarFiltros) {
+                sidebarFiltros.classList.toggle('mostrar');
+            }
+        });
+    }
+
+    // Cerrar buscador automáticamente si el cliente hace clic fuera del área
+    document.addEventListener('click', (e) => {
+        if (searchBox && searchBox.classList.contains('active')) {
+            if (!searchBox.contains(e.target) && e.target !== btnToggleSearch) {
+                searchBox.classList.remove('active');
+            }
+        }
+    });
+});
+
+// === AUTO-COLAPSAR BANNER AL ESCRIBIR EN EL BUSCADOR ===
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+    const banner = document.getElementById('hero-slider-container');
+    const btnCollapse = document.getElementById('btnCollapseBanner');
+    const KEY = 'dycrea_banner_oculto';
+
+    if (searchInput && banner) {
+        // Escuchar cada vez que el usuario ingresa texto
+        searchInput.addEventListener('input', () => {
+            
+            // Si hay al menos una letra escrita y el banner NO está colapsado aún
+            if (searchInput.value.trim().length > 0 && banner.style.maxHeight !== '0px') {
+                
+                // Aplicar la transición fluida
+                banner.style.transition = 'max-height 0.4s ease, opacity 0.4s ease';
+                banner.style.maxHeight = '0px';
+                banner.style.opacity = '0';
+                
+                // Cambiar el ícono del botón pequeño
+                if (btnCollapse) {
+                    btnCollapse.classList.add('colapsado');
+                }
+                
+                // Guardar la preferencia en la sesión (para que si recarga la página, siga oculto)
+                sessionStorage.setItem(KEY, '1');
+            }
+        });
+    }
+});
+
+// === CONTROL DE PANELES MÓVILES (FILTRAR / ORDENAR) ===
+document.addEventListener('DOMContentLoaded', () => {
+    const btnSort = document.getElementById('btnOpenSortMobile');
+    const btnFilter = document.getElementById('btnOpenFilterMobile');
+    const sidebarSort = document.getElementById('sidebarOrdenarMobile');
+    const sidebarFilter = document.getElementById('sidebarFiltrosMobile');
+    const uiOverlay = document.getElementById('uiOverlay');
+
+    function abrirPanel(panel) {
+        if (!panel) return;
+        panel.classList.add('active');
+        if (uiOverlay) uiOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Evita que la página haga scroll de fondo
+    }
+
+    function cerrarPaneles() {
+        document.querySelectorAll('.ui-sidebar').forEach(p => p.classList.remove('active'));
+        if (uiOverlay) uiOverlay.classList.remove('active');
+        document.body.style.overflow = ''; 
+    }
+
+    // Eventos de apertura
+    if (btnSort) btnSort.addEventListener('click', () => abrirPanel(sidebarSort));
+    if (btnFilter) btnFilter.addEventListener('click', () => abrirPanel(sidebarFilter));
+
+    // Eventos de cierre
+    if (uiOverlay) uiOverlay.addEventListener('click', cerrarPaneles);
+    document.querySelectorAll('.close-ui-btn, #applyFilterBtn').forEach(btn => {
+        btn.addEventListener('click', cerrarPaneles);
+    });
+});
+
+// Función para el acordeón
+window.toggleAccordion = function(element) {
+    element.classList.toggle('active');
+    const content = element.nextElementSibling;
+    content.classList.toggle('active');
+};
+
+// Asegurar que el botón de ordenar también cierre el panel
+document.getElementById('applySortBtn')?.addEventListener('click', () => {
+    // Aquí puedes añadir la lógica de ordenamiento (ej. ordenarProductos())
+    cerrarPaneles(); 
+});
+
 // Ejecución inicial
 cargarProductosDesdeBD();
 cargarCategoriasStore();

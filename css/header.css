@@ -1,5 +1,5 @@
 /* ================================================
-   HEADER.CSS — DISEÑO ORIGINAL BY DYCREA
+   HEADER.CSS — EDICIÓN PREMIUM FIEL A MAQUETA
    ================================================ */
 
 /* ── 1. TOP BAR ORIGINAL ── */
@@ -63,20 +63,84 @@
 .icon-btn:hover { color: var(--primary-accent); }
 .cart-badge { position: absolute; top: -3px; right: -5px; background: var(--danger); color: white; font-size: 0.62rem; font-weight: 700; width: 17px; height: 17px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; }
 
-/* ── 6. NAVEGACIÓN MÓVIL ── */
+/* ── 6. NAVEGACIÓN MÓVIL INTERNA ── */
 .mobile-bottom-nav { display: none; }
+.mobile-only { display: none !important; }
 
-/* ── ADAPTACIÓN MÓVIL (Como el original) ── */
+/* ── 7. RESPONSIVE COMPACTO (MÓVIL ≤768px) ── */
 @media (max-width: 768px) {
     .top-bar { justify-content: center; } 
-    .header-container { flex-wrap: wrap; gap: 15px; padding: 15px 5%; }
-    .header-search { order: 3; flex: 0 0 100%; max-width: 100%; }
-    .brand img { height: 60px; }
+    
+    .header-container { 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 4%;
+        gap: 0;
+        position: relative; /* Clave para posicionar el buscador desplegable */
+    }
+    
+    .mobile-only { display: inline-block !important; }
+    
+    /* Izquierda: Menú */
+    .menu-toggle-btn {
+        order: 1;
+        font-size: 1.4rem;
+        z-index: 10;
+    }
+    
+    /* Centro: Logo centrado absoluto en su espacio */
+    .brand {
+        order: 2;
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 5;
+    }
+    .brand img { 
+        height: 46px; 
+        transition: none; 
+    }
+    
+    /* Derecha: Grupo de botones buscar + carrito */
+    .header-actions {
+        order: 3;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        z-index: 10;
+    }
+    
+    /* Buscador desplegable oculto por defecto */
+    .header-search {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        background: var(--bg-white);
+        padding: 10px 4%;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+        border-radius: 0;
+        border-top: 1px solid #e2e8f0;
+        z-index: 99;
+    }
+    
+    /* Clase activa controlada por JS */
+    .header-search.active {
+        display: flex;
+        animation: fadeInPage 0.2s ease-in-out;
+    }
     
     .mobile-bottom-nav {
         display: flex; justify-content: space-around; align-items: center;
         position: fixed; bottom: 0; left: 0; width: 100%;
-        background: var(--bg-white); border-top: 1px solid var(--border-light);
+        background: var(--bg-white); border-top: 1px solid #f1f5f9;
         box-shadow: 0 -3px 14px rgba(0,0,0,0.06); padding: 8px;
         padding-bottom: env(safe-area-inset-bottom, 10px); z-index: 900;
         height: 60px;
@@ -87,7 +151,7 @@
     .nav-item.active i { transform: translateY(-1px); color: var(--primary-dark); }
 }
 
-/* ── EFECTO DE SCROLL QUE AÑADIMOS ── */
+/* ── 8. EFECTO DE SCROLL EN ESCRITORIO ── */
 .ecommerce-header.shrunk { padding-top: 5px !important; padding-bottom: 5px !important; }
 @media (min-width: 768px) { .ecommerce-header.shrunk .brand img { height: 75px !important; } }
-@media (max-width: 767px) { .ecommerce-header.shrunk .brand img { height: 45px !important; } }
+@media (max-width: 767px) { .ecommerce-header.shrunk .brand img { height: 40px !important; } }

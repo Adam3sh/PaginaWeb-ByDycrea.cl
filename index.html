@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/inicio.css">
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/inicio.css">
     
     <meta name="description"
         content="By Dycrea: Venta de figuras 3D coleccionables, repuestos técnicos y servicios de impresión 3D en Santiago de Chile.">
@@ -50,22 +49,33 @@
 
     <header class="ecommerce-header">
         <div class="header-container">
+            
+            <button class="icon-btn menu-toggle-btn mobile-only" id="btnToggleMenuMobile" title="Menú">
+                <i class="fas fa-bars"></i>
+            </button>
+
             <div class="brand" onclick="window.location.href='index.html'">
                 <img src="img/LogoHorizontalHead.webp" alt="Logo By Dycrea Impresiones 3D">
             </div>
 
             <div class="header-actions">
-                <button class="icon-btn" title="Mi Cuenta"><i class="far fa-user"></i></button>
+                <button class="icon-btn search-toggle-btn mobile-only" id="btnToggleSearchMobile" title="Buscar figuras...">
+                    <i class="fas fa-search"></i>
+                </button>
+                
+                <button class="icon-btn hide-mobile" title="Mi Cuenta"><i class="far fa-user"></i></button>
+                
                 <button class="icon-btn cart-btn" title="Cotización">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-badge">0</span>
                 </button>
             </div>
 
-            <div class="header-search">
+            <div class="header-search" id="searchBoxMobile">
                 <input type="text" id="searchInput" placeholder="Buscar figuras, resina...">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
+
         </div>
     </header>
 
@@ -76,6 +86,7 @@
             </div>
         </div>
     </section>
+    
     <div class="banner-toggle-wrap">
         <button id="btnCollapseBanner" title="Ocultar banner" aria-label="Ocultar banner">
             <i class="fas fa-chevron-up"></i>
@@ -83,9 +94,14 @@
     </div>
 
     <main class="main-content">
-        <button id="btnToggleFiltros" class="btn-filtros-mobile">
-            <i class="fas fa-filter"></i> Mostrar Filtros
-        </button>
+        <div class="mobile-actions-bar mobile-only">
+            <button id="btnOpenFilterMobile" class="mobile-action-btn">
+                <i class="fas fa-filter"></i> Filtrar
+            </button>
+            <button id="btnOpenSortMobile" class="mobile-action-btn">
+                <i class="fas fa-sort-amount-down"></i> Ordenar
+            </button>
+        </div>
 
         <aside class="sidebar" id="sidebarFiltros">
             <h3 class="sidebar-title"><i class="fas fa-sliders-h"></i> Filtros</h3>
@@ -104,7 +120,7 @@
         </aside>
 
         <section class="results-area">
-            <div class="results-toolbar">
+            <div class="results-toolbar hide-mobile">
                 <p>Mostrando <span id="contador-resultados">0</span> resultados</p>
                 <div class="sort-box">
                     <select class="sort-select">
@@ -138,7 +154,6 @@
             </div>
 
             <div style="margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px;">
-
                 <input type="text" id="cart-nombre" placeholder="Tu Nombre y Apellido" maxlength="40"
                     style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; outline: none;"
                     required>
@@ -153,7 +168,6 @@
                         style="padding: 12px 12px 12px 78px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; outline: none;"
                         required>
                 </div>
-
             </div>
 
             <button class="btn-checkout" onclick="procesarCompra()">
@@ -162,6 +176,52 @@
         </div>
     </div>
 
+    <div class="ui-overlay" id="uiOverlay"></div>
+
+    <div class="ui-sidebar" id="sidebarFiltrosMobile">
+        <div class="ui-sidebar-header">
+            <h3><i class="fas fa-filter"></i> Filtros</h3>
+            <button class="close-ui-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="ui-sidebar-content">
+            <div class="filter-section">
+                <h4>Categorías</h4>
+                <ul class="category-list">
+                    <li><a href="#" class="active">Todas</a></li>
+                </ul>
+            </div>
+            <div class="filter-section">
+                <h4>Material</h4>
+                <label class="custom-checkbox"><input type="checkbox"> <span class="checkmark"></span> PLA+</label>
+            </div>
+        </div>
+        <div class="ui-sidebar-footer">
+            <button class="btn-checkout" id="applyFilterBtn">Ver Resultados</button>
+        </div>
+    </div>
+
+    <div class="ui-sidebar" id="sidebarOrdenarMobile">
+        <div class="ui-sidebar-header">
+            <h3><i class="fas fa-sort-amount-down"></i> Ordenar por</h3>
+            <button class="close-ui-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="ui-sidebar-content">
+            <div class="sort-options-list">
+                <label class="sort-radio">
+                    <input type="radio" name="sort_mobile" checked>
+                    <span>Más Relevantes</span>
+                </label>
+                <label class="sort-radio">
+                    <input type="radio" name="sort_mobile">
+                    <span>Menor Precio</span>
+                </label>
+                <label class="sort-radio">
+                    <input type="radio" name="sort_mobile">
+                    <span>Mayor Precio</span>
+                </label>
+            </div>
+        </div>
+    </div>
     <footer class="ecommerce-footer">
         <div class="footer-container">
             <div class="footer-column brand-column">
@@ -232,13 +292,9 @@
     </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <script src="js/config.js"></script>
-
     <script src="js/utils.js"></script>
-
     <script src="js/carrito.js"></script>
-
     <script src="js/main.js"></script>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -265,11 +321,13 @@
 
             aplicar(sessionStorage.getItem(KEY) === '1', false);
 
-            btn.addEventListener('click', () => {
-                const ocultar = banner.style.maxHeight !== '0px';
-                sessionStorage.setItem(KEY, ocultar ? '1' : '0');
-                aplicar(ocultar, true);
-            });
+            if(btn) {
+                btn.addEventListener('click', () => {
+                    const ocultar = banner.style.maxHeight !== '0px';
+                    sessionStorage.setItem(KEY, ocultar ? '1' : '0');
+                    aplicar(ocultar, true);
+                });
+            }
         })();
     </script>
 </body>
