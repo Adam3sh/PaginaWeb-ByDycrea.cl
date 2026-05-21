@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/inicio.css">
     <link rel="stylesheet" href="css/global.css">
-    
+
     <meta name="description"
         content="By Dycrea: Venta de figuras 3D coleccionables, repuestos técnicos y servicios de impresión 3D en Santiago de Chile.">
     <meta name="keywords" content="impresión 3d, figuras 3d, filamento, resina, dycrea, santiago, chile">
@@ -49,7 +49,7 @@
 
     <header class="ecommerce-header">
         <div class="header-container">
-            
+
             <button class="icon-btn menu-toggle-btn mobile-only" id="btnToggleMenuMobile" title="Menú">
                 <i class="fas fa-bars"></i>
             </button>
@@ -59,12 +59,13 @@
             </div>
 
             <div class="header-actions">
-                <button class="icon-btn search-toggle-btn mobile-only" id="btnToggleSearchMobile" title="Buscar figuras...">
+                <button class="icon-btn search-toggle-btn mobile-only" id="btnToggleSearchMobile"
+                    title="Buscar figuras...">
                     <i class="fas fa-search"></i>
                 </button>
-                
+
                 <button class="icon-btn hide-mobile" title="Mi Cuenta"><i class="far fa-user"></i></button>
-                
+
                 <button class="icon-btn cart-btn" title="Cotización">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-badge">0</span>
@@ -86,7 +87,7 @@
             </div>
         </div>
     </section>
-    
+
     <div class="banner-toggle-wrap">
         <button id="btnCollapseBanner" title="Ocultar banner" aria-label="Ocultar banner">
             <i class="fas fa-chevron-up"></i>
@@ -186,7 +187,7 @@
         <div class="ui-sidebar-content">
             <div class="filter-section">
                 <h4>Categorías</h4>
-                <ul class="category-list">
+                <ul class="category-list" id="lista-categorias-mobile">
                     <li><a href="#" class="active">Todas</a></li>
                 </ul>
             </div>
@@ -205,21 +206,32 @@
             <h3><i class="fas fa-sort-amount-down"></i> Ordenar por</h3>
             <button class="close-ui-btn"><i class="fas fa-times"></i></button>
         </div>
+
         <div class="ui-sidebar-content">
             <div class="sort-options-list">
+
                 <label class="sort-radio">
-                    <input type="radio" name="sort_mobile" checked>
+                    <input type="radio" name="sort_mobile" value="Más Relevantes" checked>
                     <span>Más Relevantes</span>
                 </label>
+
                 <label class="sort-radio">
-                    <input type="radio" name="sort_mobile">
+                    <input type="radio" name="sort_mobile" value="Menor Precio">
                     <span>Menor Precio</span>
                 </label>
+
                 <label class="sort-radio">
-                    <input type="radio" name="sort_mobile">
+                    <input type="radio" name="sort_mobile" value="Mayor Precio">
                     <span>Mayor Precio</span>
                 </label>
+
             </div>
+        </div>
+
+        <div class="ui-sidebar-footer">
+            <button class="btn-checkout" id="applySortBtn">
+                Aplicar Orden
+            </button>
         </div>
     </div>
     <footer class="ecommerce-footer">
@@ -321,7 +333,7 @@
 
             aplicar(sessionStorage.getItem(KEY) === '1', false);
 
-            if(btn) {
+            if (btn) {
                 btn.addEventListener('click', () => {
                     const ocultar = banner.style.maxHeight !== '0px';
                     sessionStorage.setItem(KEY, ocultar ? '1' : '0');

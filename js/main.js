@@ -111,34 +111,92 @@ function renderizarProductos(lista) {
 
 // === MOTOR DE FILTROS ===
 function aplicarFiltros() {
+
     const textoBuscado = document.getElementById('searchInput').value.toLowerCase();
-    const catActiva = document.querySelector('.category-list a.active');
-    const categoria = catActiva ? catActiva.textContent.trim() : 'Todas';
-    const matSeleccionados = Array.from(document.querySelectorAll('.filter-section:nth-of-type(2) input[type="checkbox"]:checked')).map(cb => cb.closest('label').textContent.trim());
-    const sortSelect = document.querySelector('.sort-select');
-    const ordenSeleccionado = sortSelect ? sortSelect.value : 'Más Relevantes';
+
+    // Detectar categoría activa (desktop o móvil)
+    const categoriaActiva =
+        document.querySelector('#lista-categorias-sidebar a.active') ||
+        document.querySelector('#lista-categorias-mobile a.active');
+
+    const categoria = categoriaActiva
+        ? categoriaActiva.textContent.trim()
+        : 'Todas';
+
+    // Materiales
+    const matSeleccionados = Array.from(
+        document.querySelectorAll('.filter-section:nth-of-type(2) input[type="checkbox"]:checked')
+    ).map(cb => cb.closest('label').textContent.trim());
+
+    // Orden desktop
+    const sortDesktop = document.querySelector('.sort-select');
+
+    // Orden móvil
+    const sortMobile = document.querySelector('input[name="sort_mobile"]:checked');
+
+    const ordenSeleccionado =
+        window.innerWidth <= 768
+            ? (sortMobile ? sortMobile.value : 'Más Relevantes')
+            : (sortDesktop ? sortDesktop.value : 'Más Relevantes');
 
     let filtrados = productosGlobales.filter(prod => {
-        const cTexto = prod.titulo.toLowerCase().includes(textoBuscado) || prod.categoria.toLowerCase().includes(textoBuscado);
-        const cCat = (categoria === 'Todas') || (prod.categoria === categoria);
+
+        const cTexto =
+            prod.titulo.toLowerCase().includes(textoBuscado) ||
+            prod.categoria.toLowerCase().includes(textoBuscado);
+
+        const cCat =
+            categoria === 'Todas' ||
+            prod.categoria === categoria;
+
         let cMat = true;
+
         if (matSeleccionados.length > 0) {
-            cMat = prod.material ? prod.material.some(m => matSeleccionados.includes(m)) : false;
+            cMat = prod.material
+                ? prod.material.some(m => matSeleccionados.includes(m))
+                : false;
         }
+
         return cTexto && cCat && cMat;
     });
 
+    // Ordenamiento
     if (ordenSeleccionado === 'Menor Precio') {
+
         filtrados.sort((a, b) => {
-            let precioA = (a.precio_oferta && (!a.fecha_fin_oferta || new Date(a.fecha_fin_oferta) > new Date())) ? a.precio_oferta : a.precio;
-            let precioB = (b.precio_oferta && (!b.fecha_fin_oferta || new Date(b.fecha_fin_oferta) > new Date())) ? b.precio_oferta : b.precio;
-            return precioA - precioB; 
+
+            let precioA =
+                (a.precio_oferta &&
+                (!a.fecha_fin_oferta || new Date(a.fecha_fin_oferta) > new Date()))
+                    ? a.precio_oferta
+                    : a.precio;
+
+            let precioB =
+                (b.precio_oferta &&
+                (!b.fecha_fin_oferta || new Date(b.fecha_fin_oferta) > new Date()))
+                    ? b.precio_oferta
+                    : b.precio;
+
+            return precioA - precioB;
         });
+
     } else if (ordenSeleccionado === 'Mayor Precio') {
+
         filtrados.sort((a, b) => {
-            let precioA = (a.precio_oferta && (!a.fecha_fin_oferta || new Date(a.fecha_fin_oferta) > new Date())) ? a.precio_oferta : a.precio;
-            let precioB = (b.precio_oferta && (!b.fecha_fin_oferta || new Date(b.fecha_fin_oferta) > new Date())) ? b.precio_oferta : b.precio;
-            return precioB - precioA; 
+
+            let precioA =
+                (a.precio_oferta &&
+                (!a.fecha_fin_oferta || new Date(a.fecha_fin_oferta) > new Date()))
+                    ? a.precio_oferta
+                    : a.precio;
+
+            let precioB =
+                (b.precio_oferta &&
+                (!b.fecha_fin_oferta || new Date(b.fecha_fin_oferta) > new Date()))
+                    ? b.precio_oferta
+                    : b.precio;
+
+            return precioB - precioA;
         });
     }
 
@@ -175,25 +233,71 @@ async function cargarProductosDesdeBD() {
 }
 
 async function cargarCategoriasStore() {
+
     try {
-        const { data, error } = await supabaseClient.from('categorias').select('nombre').order('nombre');
+
+        const { data, error } = await supabaseClient
+            .from('categorias')
+            .select('nombre')
+            .order('nombre');
+
         if (error) throw error;
 
-        const listaSidebar = document.getElementById('lista-categorias-sidebar');
-        if (!listaSidebar) return;
+        const listaDesktop = document.getElementById('lista-categorias-sidebar');
+        const listaMobile = document.getElementById('lista-categorias-mobile');
 
-        listaSidebar.innerHTML = '<li><a href="#" class="active">Todas</a></li>';
-        data.forEach(cat => { listaSidebar.innerHTML += `<li><a href="#">${cat.nombre}</a></li>`; });
+        if (!listaDesktop || !listaMobile) return;
 
+        const categoriaTodas = `
+            <li>
+                <a href="#" class="active">Todas</a>
+            </li>
+        `;
+
+        listaDesktop.innerHTML = categoriaTodas;
+        listaMobile.innerHTML = categoriaTodas;
+
+        data.forEach(cat => {
+
+            const html = `
+                <li>
+                    <a href="#">${cat.nombre}</a>
+                </li>
+            `;
+
+            listaDesktop.innerHTML += html;
+            listaMobile.innerHTML += html;
+        });
+
+        // Eventos categorías
         document.querySelectorAll('.category-list a').forEach(enlace => {
+
             enlace.addEventListener('click', (e) => {
-                e.preventDefault(); 
-                document.querySelectorAll('.category-list a').forEach(el => el.classList.remove('active'));
-                e.target.classList.add('active');
+
+                e.preventDefault();
+
+                const texto = enlace.textContent.trim();
+
+                document.querySelectorAll('.category-list a').forEach(el => {
+                    el.classList.remove('active');
+                });
+
+                // Activar desktop + mobile al mismo tiempo
+                document.querySelectorAll('.category-list a').forEach(el => {
+
+                    if (el.textContent.trim() === texto) {
+                        el.classList.add('active');
+                    }
+                });
+
                 aplicarFiltros();
             });
         });
-    } catch (err) { console.error("Error cargando categorías:", err); }
+
+    } catch (err) {
+
+        console.error("Error cargando categorías:", err);
+    }
 }
 
 async function cargarBanners() {
@@ -367,10 +471,17 @@ window.toggleAccordion = function(element) {
     content.classList.toggle('active');
 };
 
-// Asegurar que el botón de ordenar también cierre el panel
 document.getElementById('applySortBtn')?.addEventListener('click', () => {
-    // Aquí puedes añadir la lógica de ordenamiento (ej. ordenarProductos())
-    cerrarPaneles(); 
+
+    aplicarFiltros();
+
+    document.querySelectorAll('.ui-sidebar').forEach(p => {
+        p.classList.remove('active');
+    });
+
+    document.getElementById('uiOverlay')?.classList.remove('active');
+
+    document.body.style.overflow = '';
 });
 
 // Ejecución inicial
