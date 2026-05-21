@@ -366,6 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnToggleSearch = document.getElementById('btnToggleSearchMobile');
     const searchBox = document.getElementById('searchBoxMobile');
     const btnToggleMenu = document.getElementById('btnToggleMenuMobile');
+    const btnExplorarMobile = document.getElementById('btnToggleFiltrosMobile');
 
     // Desplegar/Ocultar buscador en celular
     if (btnToggleSearch && searchBox) {
@@ -377,6 +378,38 @@ document.addEventListener('DOMContentLoaded', () => {
             if (searchBox.classList.contains('active')) {
                 searchBox.querySelector('input')?.focus();
             }
+        });
+    }
+
+        // BOTÓN EXPLORAR DE LA NAVBAR INFERIOR
+    if (btnExplorarMobile) {
+
+        btnExplorarMobile.addEventListener('click', (e) => {
+
+            e.preventDefault();
+
+            // Abrir buscador superior
+            if (searchBox) {
+                searchBox.classList.add('active');
+
+                setTimeout(() => {
+                    searchBox.querySelector('input')?.focus();
+                }, 200);
+            }
+
+            // Abrir filtros móviles
+            const sidebarFilter = document.getElementById('sidebarFiltrosMobile');
+            const uiOverlay = document.getElementById('uiOverlay');
+
+            if (sidebarFilter) {
+                sidebarFilter.classList.add('active');
+            }
+
+            if (uiOverlay) {
+                uiOverlay.classList.add('active');
+            }
+
+            document.body.style.overflow = 'hidden';
         });
     }
 
