@@ -35,7 +35,29 @@
     transition: height 0.3s ease; 
 }
 
-/* ── 4. BUSCADOR ORIGINAL ── */
+/* ── 4. BOTÓN VOLVER (ESCRITORIO) ── */
+.btn-back-header {
+    background: transparent;
+    border: 1px solid var(--secondary-brand, #0f172a);
+    color: var(--secondary-brand, #0f172a);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    margin-right: auto; /* Empuja las acciones a la derecha en PC */
+}
+.btn-back-header:hover {
+    background: var(--secondary-brand, #0f172a);
+    color: #ffffff;
+}
+
+/* ── 5. BUSCADOR ORIGINAL ── */
 .header-search { 
     flex: 1; max-width: 580px; display: flex; align-items: center; 
     background: #f0f2f5; border-radius: 50px; padding: 5px; 
@@ -57,17 +79,17 @@
 }
 .search-btn:hover { background: var(--primary-dark); transform: scale(1.06); }
 
-/* ── 5. ICONOS Y ACCIONES ── */
+/* ── 6. ICONOS Y ACCIONES ── */
 .header-actions { display: flex; align-items: center; gap: 15px; }
 .icon-btn { background: transparent; border: none; font-size: 1.3rem; color: var(--text-dark); cursor: pointer; position: relative; transition: color 0.3s; padding: 5px; }
 .icon-btn:hover { color: var(--primary-accent); }
 .cart-badge { position: absolute; top: -3px; right: -5px; background: var(--danger); color: white; font-size: 0.62rem; font-weight: 700; width: 17px; height: 17px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; }
 
-/* ── 6. NAVEGACIÓN MÓVIL INTERNA ── */
+/* ── 7. NAVEGACIÓN MÓVIL INTERNA ── */
 .mobile-bottom-nav { display: none; }
 .mobile-only { display: none !important; }
 
-/* ── 7. RESPONSIVE COMPACTO (MÓVIL ≤768px) ── */
+/* ── 8. RESPONSIVE COMPACTO (MÓVIL ≤768px) ── */
 @media (max-width: 768px) {
     .top-bar { justify-content: center; } 
     
@@ -75,21 +97,28 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 10px 4%;
+        padding: 12px 14px; /* Ajuste para pegar botones simétricamente a los bordes */
         gap: 0;
-        position: relative; /* Clave para posicionar el buscador desplegable */
+        position: relative; /* Clave para el centrado absoluto del logo */
     }
     
     .mobile-only { display: inline-block !important; }
     
-    /* Izquierda: Menú */
-    .menu-toggle-btn {
+    /* Izquierda: Menú (Inicio) o Botón Volver (Producto) */
+    .menu-toggle-btn, .btn-back-header {
         order: 1;
-        font-size: 1.4rem;
+        font-size: 1.35rem; /* Íconos un poco más grandes y cómodos al toque */
         z-index: 10;
+        background: transparent;
+        border: none;
+        color: var(--secondary-brand, #0f172a);
+        padding: 0;
+        display: flex;
+        align-items: center;
+        margin-left: -2px; /* Alineación perfecta a la izquierda */
     }
     
-    /* Centro: Logo centrado absoluto en su espacio */
+    /* Centro: Logo centrado matemático absoluto en su espacio */
     .brand {
         order: 2;
         margin: 0 auto;
@@ -102,17 +131,23 @@
         z-index: 5;
     }
     .brand img { 
-        height: 46px; 
+        height: 38px; /* Tamaño ideal para que la barra se vea moderna y delgada */
         transition: none; 
     }
     
-    /* Derecha: Grupo de botones buscar + carrito */
+    /* Derecha: Grupo de acciones y carrito */
     .header-actions {
         order: 3;
         display: flex;
         align-items: center;
         gap: 14px;
         z-index: 10;
+        margin-right: -2px; /* Alineación perfecta a la derecha */
+    }
+    
+    .header-actions .icon-btn {
+        font-size: 1.35rem; /* Misma medida que el botón izquierdo para simetría */
+        padding: 0;
     }
     
     /* Buscador desplegable oculto por defecto */
@@ -131,7 +166,6 @@
         z-index: 99;
     }
     
-    /* Clase activa controlada por JS */
     .header-search.active {
         display: flex;
         animation: fadeInPage 0.2s ease-in-out;
@@ -151,7 +185,13 @@
     .nav-item.active i { transform: translateY(-1px); color: var(--primary-dark); }
 }
 
-/* ── 8. EFECTO DE SCROLL EN ESCRITORIO ── */
+/* ── 9. EFECTO DE SCROLL EN ESCRITORIO ── */
 .ecommerce-header.shrunk { padding-top: 5px !important; padding-bottom: 5px !important; }
-@media (min-width: 768px) { .ecommerce-header.shrunk .brand img { height: 75px !important; } }
-/*@media (max-width: 767px) { .ecommerce-header.shrunk .brand img { height: 40px !important; } }
+@media (min-width: 768px) { 
+    .ecommerce-header.shrunk .brand img { height: 75px !important; }
+    /* Organización para Desktop si se usa el Botón Volver */
+    .ecommerce-header .brand { order: 1; }
+    .ecommerce-header .btn-back-header { order: 2; margin-left: 20px; }
+    .ecommerce-header .header-search { order: 3; }
+    .ecommerce-header .header-actions { order: 4; }
+}
