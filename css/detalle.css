@@ -1,28 +1,33 @@
 /* ==========================================================================
-   DETALLE.CSS — VISTA DE PRODUCTO PREMIUM (ESTILO MERCADO LIBRE)
+   DETALLE.CSS — VISTA DE PRODUCTO (ESTILO MERCADO LIBRE)
    ========================================================================== */
 
-/* --- CONTENEDOR PRINCIPAL --- */
+/* =========================================
+   1. CONTENEDOR PRINCIPAL / LAYOUT
+   ========================================= */
 .product-detail-layout {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr; /* Columna de galería más ancha */
+    grid-template-columns: 1fr 1fr; /* Ahora son dos mitades exactas estandarizadas */
     gap: 48px;
     background: var(--bg-white, #ffffff);
-    padding: 32px;
+    padding: 40px;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    max-width: 1200px;
+    /* Abarca mucho más ancho en PC */
+    max-width: 1350px; 
+    width: 95%; 
     margin: 40px auto;
     align-items: start;
 }
 
-/* --- BLOQUE IZQUIERDO: GALERÍA --- */
+/* =========================================
+   2. BLOQUE IZQUIERDO: GALERÍA
+   ========================================= */
 .product-gallery-wrapper {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    position: sticky;
-    top: 110px; /* Se queda fijo en PC al hacer scroll hacia abajo */
+    /* Eliminado el position: sticky para que no choque con las características de abajo */
 }
 
 .product-gallery {
@@ -43,6 +48,29 @@
     object-fit: contain; /* Evita CUALQUIER tipo de deformación o estiramiento */
     padding: 20px;
     transition: transform 0.3s ease;
+}
+
+/* =========================================
+   ETIQUETA DE CATEGORÍA FLOTANTE
+   ========================================= */
+#detail-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    /* Diseño de la etiqueta */
+    background-color: var(--text-dark, #0f172a); /* Fondo oscuro elegante */
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Flex por si se le suma la etiqueta de descuento al lado */
+    display: flex;
+    align-items: center;
 }
 
 /* Miniaturas */
@@ -69,7 +97,9 @@
     transform: scale(1.05);
 }
 
-/* --- BLOQUE DERECHO: INFORMACIÓN Y COMPRA --- */
+/* =========================================
+   3. BLOQUE DERECHO: INFORMACIÓN Y PRECIOS
+   ========================================= */
 .product-info-panel {
     display: flex;
     flex-direction: column;
@@ -83,7 +113,6 @@
     margin-bottom: 12px;
 }
 
-/* Precios */
 .price-block {
     margin-bottom: 24px;
     padding-bottom: 20px;
@@ -97,7 +126,9 @@
     letter-spacing: -0.5px;
 }
 
-/* Variantes (Selectores limpios) */
+/* =========================================
+   4. VARIANTES Y PREFERENCIAS DE COMPRA
+   ========================================= */
 .specs-box {
     margin-bottom: 24px;
 }
@@ -129,143 +160,7 @@
     border-color: var(--secondary-brand, #0f172a);
 }
 
-/* Ficha Técnica Estilo Mercado Libre */
-.ml-table {
-    list-style: none;
-    padding: 0;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 20px;
-}
-
-.ml-table li {
-    display: flex;
-    border-bottom: 1px solid #e2e8f0;
-    font-size: 0.9rem;
-}
-
-.ml-table li:last-child {
-    border-bottom: none;
-}
-
-.ml-table li strong {
-    width: 35%;
-    padding: 12px;
-    background: #f8fafc;
-    color: #475569;
-    font-weight: 600;
-}
-
-.ml-table li span {
-    width: 65%;
-    padding: 12px;
-    color: #334155;
-    background: #ffffff;
-}
-
-/* Trust Badges (Garantías) */
-.ml-trust-badge {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-top: 20px;
-    padding: 12px;
-    background: #f0fdf4;
-    border-radius: 8px;
-}
-
-.ml-trust-badge i {
-    color: #16a34a;
-    font-size: 1.1rem;
-    margin-top: 2px;
-}
-
-.ml-green-text {
-    color: #16a34a;
-    font-size: 0.88rem;
-    font-weight: 600;
-}
-
-.ml-sub-text {
-    color: #64748b;
-    font-size: 0.82rem;
-    line-height: 1.4;
-}
-
-/* ==========================================================================
-   ANULACIÓN Y LIMPIEZA PARA DISPOSITIVOS MÓVILES (≤ 768px)
-   ========================================================================== */
-@media (max-width: 768px) {
-    /* Ocultar barra de navegación inferior fija y menús molestos que roban espacio en el detalle */
-    .mobile-bottom-nav, 
-    .mobile-actions-bar,
-    .banner-toggle-wrap {
-        display: none !important;
-    }
-
-    /* Ajuste del cuerpo para recuperar el espacio del footer flotante */
-    body {
-        padding-bottom: 0 !important;
-    }
-
-    /* Pasar a flujo vertical completo sin tarjetas separadas raras */
-    .product-detail-layout {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 16px;
-        margin: 0 auto;
-        box-shadow: none;
-        border-radius: 0;
-        background: #ffffff;
-    }
-
-    /* La galería deja de ser sticky y se adapta al ancho de la pantalla táctil */
-    .product-gallery-wrapper {
-        position: static;
-    }
-
-    .product-gallery {
-        border-radius: 8px;
-        border: none;
-        background: #ffffff; /* Fondo limpio para destacar la figura */
-    }
-
-    #detail-image {
-        padding: 5px; /* Aprovecha el máximo espacio del viewport */
-    }
-
-    /* Tipografías e info más compactas en móvil */
-    #detail-title {
-        font-size: 1.3rem;
-        margin-top: 10px;
-    }
-
-    .detail-price {
-        font-size: 1.8rem;
-    }
-
-    /* Optimización de la tabla técnica en pantallas angostas */
-    .ml-table li {
-        flex-direction: column;
-    }
-
-    .ml-table li strong {
-        width: 100%;
-        padding: 8px 12px;
-        background: #f1f5f9;
-        font-size: 0.8rem;
-    }
-
-    .ml-table li span {
-        width: 100%;
-        padding: 8px 12px;
-    }
-}
-
-/* ==========================================================================
-   BLOQUE DE PREFERENCIAS DE COMPRA (MATERIAL Y COLOR)
-   ========================================================================== */
+/* Preferencias (Material/Color listado) */
 .product-buying-preferences {
     margin-top: 24px;
     padding: 16px 0;
@@ -282,9 +177,9 @@
 }
 
 .preference-label {
-    color: #64748b; /* Gris elegante */
+    color: #64748b;
     font-weight: 500;
-    width: 100px; /* Alineación perfecta de los valores */
+    width: 100px;
 }
 
 .preference-value {
@@ -296,9 +191,7 @@
     border: 1px solid #e2e8f0;
 }
 
-/* ==========================================================================
-   BOTONES DE SELECCIÓN DE VARIANTES (ORDENADOS)
-   ========================================================================== */
+/* Botones de selección de variantes */
 .variant-group {
     display: flex;
     flex-direction: column;
@@ -349,4 +242,161 @@
     color: #3483fa;
     background-color: rgba(52, 131, 250, 0.08);
     box-shadow: 0 0 0 1px #3483fa; 
+}
+
+/* =========================================
+   5. CARACTERÍSTICAS FULL WIDTH Y FICHA TÉCNICA
+   ========================================= */
+.full-width-specs {
+    grid-column: 1 / -1; /* Ocupa TODO el ancho de ambas columnas */
+    margin-top: 20px;
+    padding-top: 40px;
+    border-top: 2px solid #f1f5f9;
+}
+
+.full-width-specs h3 {
+    font-size: 1.4rem;
+    color: var(--text-dark, #0f172a);
+    margin-bottom: 24px;
+    text-transform: none;
+}
+
+/* Tabla dividida en 2 columnas */
+.ml-table {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 Características por fila */
+    gap: 20px;
+    border: none;
+    margin-top: 0;
+}
+
+.ml-table li {
+    display: flex;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.ml-table li strong {
+    width: 40%;
+    padding: 14px;
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    border-right: 1px solid #e2e8f0;
+}
+
+.ml-table li span {
+    width: 60%;
+    padding: 14px;
+    color: #334155;
+}
+
+/* Trust Badges (Garantías) */
+.ml-trust-badge {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 12px;
+    background: #f0fdf4;
+    border-radius: 8px;
+}
+
+.ml-trust-badge i {
+    color: #16a34a;
+    font-size: 1.1rem;
+    margin-top: 2px;
+}
+
+.ml-green-text {
+    color: #16a34a;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.ml-sub-text {
+    color: #64748b;
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   6. MEDIA QUERIES (DISPOSITIVOS MÓVILES ≤ 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .mobile-bottom-nav, 
+    .mobile-actions-bar,
+    .banner-toggle-wrap {
+        display: none !important;
+    }
+
+    body {
+        padding-bottom: 0 !important;
+    }
+
+    .product-detail-layout {
+        grid-template-columns: 1fr; /* Todo a 1 sola columna vertical */
+        gap: 20px;
+        padding: 16px;
+        margin: 0 auto;
+        box-shadow: none;
+        border-radius: 0;
+        background: #ffffff;
+    }
+
+    .full-width-specs {
+        grid-column: 1; /* Se resetea para móviles */
+        padding-top: 20px;
+        margin-top: 10px;
+    }
+
+    .ml-table {
+        grid-template-columns: 1fr; /* La tabla vuelve a ser de 1 sola lista hacia abajo */
+        gap: 10px;
+    }
+
+    .product-gallery-wrapper {
+        position: static;
+    }
+
+    .product-gallery {
+        border-radius: 8px;
+        border: none;
+        background: #ffffff;
+    }
+
+    #detail-image {
+        padding: 5px;
+    }
+
+    #detail-title {
+        font-size: 1.3rem;
+        margin-top: 10px;
+    }
+
+    .detail-price {
+        font-size: 1.8rem;
+    }
+
+    .ml-table li {
+        flex-direction: column;
+    }
+
+    .ml-table li strong {
+        width: 100%;
+        padding: 8px 12px;
+        background: #f1f5f9;
+        font-size: 0.8rem;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .ml-table li span {
+        width: 100%;
+        padding: 8px 12px;
+    }
 }
