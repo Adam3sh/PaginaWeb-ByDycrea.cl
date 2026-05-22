@@ -59,7 +59,7 @@ function renderizarProductos(lista) {
         
         let precioOriginalHTML = esOfertaValida ? `<span style="display: block; text-decoration: line-through; color: #a0aec0; font-size: 0.85rem; font-weight: 500; margin-bottom: -2px;">Normal: $${prod.precio.toLocaleString('es-CL')}</span>` : '';
         let colorNuevo = esOfertaValida ? 'var(--danger)' : 'var(--secondary-brand)';
-        const precioFormateado = precioOriginalHTML + `<span style="color: ${colorNuevo};">` + new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(precioMostrar) + `</span>`;
+        const precioFormateado = precioOriginalHTML + `<span style="color: ${colorNuevo};">` + new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(precioMostrar) + ` CLP</span>`;
 
         let badgesHTML = `<span class="badge category">${prod.categoria}</span>`;
         if (sinStock) {

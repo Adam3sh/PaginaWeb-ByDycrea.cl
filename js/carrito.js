@@ -25,13 +25,13 @@ window.renderizarCarrito = function() {
     carrito.forEach((item, index) => {
         total += item.precio;
         
-        let precioInfo = `<div class="cart-item-price">$${item.precio.toLocaleString('es-CL')}</div>`;
+        let precioInfo = `<div class="cart-item-price">$${item.precio.toLocaleString('es-CL')} CLP</div>`;
         if (item.precioOriginal && item.precioOriginal > item.precio) {
             let ahorro = item.precioOriginal - item.precio;
             precioInfo = `
                 <div class="cart-item-price" style="display: flex; flex-direction: column; line-height: 1.2; margin-top: 5px;">
                     <span style="text-decoration: line-through; color: #a0aec0; font-size: 0.8rem; font-weight: 500;">$${item.precioOriginal.toLocaleString('es-CL')}</span>
-                    <span style="color: var(--danger); font-size: 1.1rem;">$${item.precio.toLocaleString('es-CL')}</span>
+                    <span style="color: var(--danger); font-size: 1.1rem;">$${item.precio.toLocaleString('es-CL')} CLP</span>
                 </div>
             `;
         }
@@ -61,7 +61,7 @@ window.renderizarCarrito = function() {
         `;
         container.appendChild(div);
     });
-    if(priceText) priceText.textContent = `$${total.toLocaleString('es-CL')}`;
+    if(priceText) priceText.textContent = `$${total.toLocaleString('es-CL')} CLP`;
 };
 
 // Modificamos la función para recibir material y color

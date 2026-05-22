@@ -61,7 +61,7 @@ async function cargarDetalleProducto() {
                 </div>
             `;
         } else {
-            document.getElementById('detail-price').textContent = new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(precioMostrar);
+            document.getElementById('detail-price').textContent = `$${precioMostrar.toLocaleString('es-CL')} CLP`;
         }
 
         // Etiquetas (Badges)

@@ -262,3 +262,91 @@
         padding: 8px 12px;
     }
 }
+
+/* ==========================================================================
+   BLOQUE DE PREFERENCIAS DE COMPRA (MATERIAL Y COLOR)
+   ========================================================================== */
+.product-buying-preferences {
+    margin-top: 24px;
+    padding: 16px 0;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.preference-row {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.preference-label {
+    color: #64748b; /* Gris elegante */
+    font-weight: 500;
+    width: 100px; /* Alineación perfecta de los valores */
+}
+
+.preference-value {
+    color: var(--text-dark, #0f172a);
+    font-weight: 600;
+    background: #f8fafc;
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+/* ==========================================================================
+   BOTONES DE SELECCIÓN DE VARIANTES (ORDENADOS)
+   ========================================================================== */
+.variant-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.variant-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark, #0f172a);
+    margin: 0;
+}
+
+.variant-selected-text {
+    font-weight: 400;
+    color: #64748b;
+    margin-left: 4px;
+}
+
+.variant-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.variant-btn {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: var(--text-dark, #0f172a);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    outline: none;
+}
+
+.variant-btn:hover {
+    border-color: #3483fa;
+    color: #3483fa;
+}
+
+.variant-btn.active {
+    border-color: #3483fa;
+    color: #3483fa;
+    background-color: rgba(52, 131, 250, 0.08);
+    box-shadow: 0 0 0 1px #3483fa; 
+}
