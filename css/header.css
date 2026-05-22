@@ -81,9 +81,9 @@
 
 /* ── 6. ICONOS Y ACCIONES ── */
 .header-actions { display: flex; align-items: center; gap: 15px; }
-.icon-btn { background: transparent; border: none; font-size: 1.3rem; color: var(--text-dark); cursor: pointer; position: relative; transition: color 0.3s; padding: 5px; }
+.icon-btn { background: transparent; border: none; font-size: 2.5rem; color: var(--text-dark); cursor: pointer; position: relative; transition: color 0.3s; padding: 5px; }
 .icon-btn:hover { color: var(--primary-accent); }
-.cart-badge { position: absolute; top: -3px; right: -5px; background: var(--danger); color: white; font-size: 0.62rem; font-weight: 700; width: 17px; height: 17px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.cart-badge { position: absolute; top: -3px; right: -5px; background: var(--danger); color: white; font-size: 0.75rem; font-weight: 700; width: 17px; height: 17px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; }
 
 /* ── 7. NAVEGACIÓN MÓVIL INTERNA ── */
 .mobile-bottom-nav { display: none; }
@@ -146,7 +146,7 @@
     }
     
     .header-actions .icon-btn {
-        font-size: 1.35rem; /* Misma medida que el botón izquierdo para simetría */
+        font-size: 1.45rem; /* Misma medida que el botón izquierdo para simetría */
         padding: 0;
     }
     
